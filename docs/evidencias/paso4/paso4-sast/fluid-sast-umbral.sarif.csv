@@ -1,0 +1,3645 @@
+title,cwe,description,cvss_v4,cvss_v4_score,cvss_v4_severity,finding,kind,where,snippet,method
+024. Unrestricted access between network segments - AWS,CWE-1327,Las reglas ingress/egress de los SecurityGroup usan CIDRs abiertos a todo el mundo en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,71,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+  70 |     protocol    = ""tcp""
+> 71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+  84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.security_group_open_cidrs
+024. Unrestricted access between network segments - AWS,CWE-1327,Las reglas ingress/egress de los SecurityGroup usan CIDRs abiertos a todo el mundo en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,71,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+  70 |     protocol    = ""tcp""
+> 71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+  84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.security_group_open_cidrs
+024. Unrestricted access between network segments - AWS,CWE-1327,Las reglas ingress/egress de los SecurityGroup usan CIDRs abiertos a todo el mundo en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,71,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+  70 |     protocol    = ""tcp""
+> 71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+  84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.security_group_open_cidrs
+024. Unrestricted access between network segments - AWS,CWE-1327,Las reglas ingress/egress de los SecurityGroup usan CIDRs abiertos a todo el mundo en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,72,"
+  63 | resource ""aws_security_group"" ""alb"" {
+  64 |   name        = ""${var.project_name}-alb-sg""
+  65 |   description = ""Security group for ALB""
+  66 |   vpc_id      = aws_vpc.main.id
+  67 |
+  68 |   ingress {
+  69 |     from_port   = 80
+  70 |     to_port     = 80
+  71 |     protocol    = ""tcp""
+> 72 |     cidr_blocks = [""0.0.0.0/0""]
+  73 |   }
+  74 |
+  75 |   ingress {
+  76 |     from_port   = 443
+  77 |     to_port     = 443
+  78 |     protocol    = ""tcp""
+  79 |     cidr_blocks = [""0.0.0.0/0""]
+  80 |   }
+  81 |
+  82 |   egress {
+  83 |     from_port   = 0
+  84 |     to_port     = 0
+  85 |     protocol    = ""-1""
+  86 |     cidr_blocks = [""0.0.0.0/0""]
+  87 |   }
+  88 |
+  89 |   tags = {
+  90 |     Name        = ""${var.project_name}-alb-sg""
+  91 |     Project     = var.project_name
+  92 |     Environment = var.environment
+  93 |   }
+  94 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.security_group_open_cidrs
+024. Unrestricted access between network segments - AWS,CWE-1327,Las reglas ingress/egress de los SecurityGroup usan CIDRs abiertos a todo el mundo en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,72,"
+  63 | resource ""aws_security_group"" ""alb"" {
+  64 |   name        = ""${var.project_name}-alb-sg""
+  65 |   description = ""Security group for ALB""
+  66 |   vpc_id      = aws_vpc.main.id
+  67 |
+  68 |   ingress {
+  69 |     from_port   = 80
+  70 |     to_port     = 80
+  71 |     protocol    = ""tcp""
+> 72 |     cidr_blocks = [""0.0.0.0/0""]
+  73 |   }
+  74 |
+  75 |   ingress {
+  76 |     from_port   = 443
+  77 |     to_port     = 443
+  78 |     protocol    = ""tcp""
+  79 |     cidr_blocks = [""0.0.0.0/0""]
+  80 |   }
+  81 |
+  82 |   egress {
+  83 |     from_port   = 0
+  84 |     to_port     = 0
+  85 |     protocol    = ""-1""
+  86 |     cidr_blocks = [""0.0.0.0/0""]
+  87 |   }
+  88 |
+  89 |   tags = {
+  90 |     Name        = ""${var.project_name}-alb-sg""
+  91 |     Project     = var.project_name
+  92 |     Environment = var.environment
+  93 |   }
+  94 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.security_group_open_cidrs
+266. Excessive Privileges - Docker,CWE-250,"No se encontró ningún comando para la creación de un grupo o usuario, asegúrese de que el contenedor este corriendo como non-root en juice-shop-paso4/test/smoke/Dockerfile",CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:U,4.4,Medium,https://db.fluidattacks.com/wek/266,SAST,1,"
+> 1 | FROM alpine
+  2 |
+  3 | RUN apk add curl
+  4 |
+  5 | COPY smoke-test.sh smoke-test.sh
+  6 |
+  7 | CMD [""sh"", ""smoke-test.sh"", ""http://app:3000""]
+    ^ Col 0
+",docker.general.f266.container_without_user
+332. Use of insecure channel - Source code,CWE-319,El AWS SecurityGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/332,SAST,70,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+> 70 |     protocol    = ""tcp""
+  71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+  84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f332.tcp_ingress_on_http_port
+332. Use of insecure channel - Source code,CWE-319,El AWS SecurityGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/332,SAST,70,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+> 70 |     protocol    = ""tcp""
+  71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+  84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f332.tcp_ingress_on_http_port
+332. Use of insecure channel - Source code,CWE-319,El AWS SecurityGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/332,SAST,70,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+> 70 |     protocol    = ""tcp""
+  71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+  84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f332.tcp_ingress_on_http_port
+332. Use of insecure channel - Source code,CWE-319,El AWS SecurityGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/332,SAST,71,"
+  63 | resource ""aws_security_group"" ""alb"" {
+  64 |   name        = ""${var.project_name}-alb-sg""
+  65 |   description = ""Security group for ALB""
+  66 |   vpc_id      = aws_vpc.main.id
+  67 |
+  68 |   ingress {
+  69 |     from_port   = 80
+  70 |     to_port     = 80
+> 71 |     protocol    = ""tcp""
+  72 |     cidr_blocks = [""0.0.0.0/0""]
+  73 |   }
+  74 |
+  75 |   ingress {
+  76 |     from_port   = 443
+  77 |     to_port     = 443
+  78 |     protocol    = ""tcp""
+  79 |     cidr_blocks = [""0.0.0.0/0""]
+  80 |   }
+  81 |
+  82 |   egress {
+  83 |     from_port   = 0
+  84 |     to_port     = 0
+  85 |     protocol    = ""-1""
+  86 |     cidr_blocks = [""0.0.0.0/0""]
+  87 |   }
+  88 |
+  89 |   tags = {
+  90 |     Name        = ""${var.project_name}-alb-sg""
+  91 |     Project     = var.project_name
+  92 |     Environment = var.environment
+  93 |   }
+  94 | }
+     ^ Col 0
+",terraform.aws_ec2.f332.tcp_ingress_on_http_port
+332. Use of insecure channel - Source code,CWE-319,El AWS SecurityGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/332,SAST,71,"
+  63 | resource ""aws_security_group"" ""alb"" {
+  64 |   name        = ""${var.project_name}-alb-sg""
+  65 |   description = ""Security group for ALB""
+  66 |   vpc_id      = aws_vpc.main.id
+  67 |
+  68 |   ingress {
+  69 |     from_port   = 80
+  70 |     to_port     = 80
+> 71 |     protocol    = ""tcp""
+  72 |     cidr_blocks = [""0.0.0.0/0""]
+  73 |   }
+  74 |
+  75 |   ingress {
+  76 |     from_port   = 443
+  77 |     to_port     = 443
+  78 |     protocol    = ""tcp""
+  79 |     cidr_blocks = [""0.0.0.0/0""]
+  80 |   }
+  81 |
+  82 |   egress {
+  83 |     from_port   = 0
+  84 |     to_port     = 0
+  85 |     protocol    = ""-1""
+  86 |     cidr_blocks = [""0.0.0.0/0""]
+  87 |   }
+  88 |
+  89 |   tags = {
+  90 |     Name        = ""${var.project_name}-alb-sg""
+  91 |     Project     = var.project_name
+  92 |     Environment = var.environment
+  93 |   }
+  94 | }
+     ^ Col 0
+",terraform.aws_ec2.f332.tcp_ingress_on_http_port
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,186,"
+  182 | resource ""aws_lb_listener"" ""https"" {
+  183 |   load_balancer_arn = aws_lb.juice_shop.arn
+  184 |   port              = 443
+  185 |   protocol          = ""HTTPS""
+> 186 |   ssl_policy        = ""ELBSecurityPolicy-TLS13-1-2-2021-06""
+  187 |   certificate_arn   = aws_iam_server_certificate.juice_shop_tls.arn
+  188 |
+  189 |   default_action {
+  190 |     type             = ""forward""
+  191 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  192 |   }
+  193 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,156,"
+> 156 | resource ""aws_lb_listener"" ""http"" {
+  157 |   load_balancer_arn = aws_lb.juice_shop.arn
+  158 |   port              = 80
+  159 |   protocol          = ""HTTP""
+  160 |
+  161 |   default_action {
+  162 |     type             = ""forward""
+  163 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  164 |   }
+  165 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,186,"
+  182 | resource ""aws_lb_listener"" ""https"" {
+  183 |   load_balancer_arn = aws_lb.juice_shop.arn
+  184 |   port              = 443
+  185 |   protocol          = ""HTTPS""
+> 186 |   ssl_policy        = ""ELBSecurityPolicy-TLS13-1-2-2021-06""
+  187 |   certificate_arn   = aws_iam_server_certificate.juice_shop_tls.arn
+  188 |
+  189 |   default_action {
+  190 |     type             = ""forward""
+  191 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  192 |   }
+  193 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,156,"
+> 156 | resource ""aws_lb_listener"" ""http"" {
+  157 |   load_balancer_arn = aws_lb.juice_shop.arn
+  158 |   port              = 80
+  159 |   protocol          = ""HTTP""
+  160 |
+  161 |   default_action {
+  162 |     type             = ""forward""
+  163 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  164 |   }
+  165 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,186,"
+  182 | resource ""aws_lb_listener"" ""https"" {
+  183 |   load_balancer_arn = aws_lb.juice_shop.arn
+  184 |   port              = 443
+  185 |   protocol          = ""HTTPS""
+> 186 |   ssl_policy        = ""ELBSecurityPolicy-TLS13-1-2-2021-06""
+  187 |   certificate_arn   = aws_iam_server_certificate.juice_shop_tls.arn
+  188 |
+  189 |   default_action {
+  190 |     type             = ""forward""
+  191 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  192 |   }
+  193 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,156,"
+> 156 | resource ""aws_lb_listener"" ""http"" {
+  157 |   load_balancer_arn = aws_lb.juice_shop.arn
+  158 |   port              = 80
+  159 |   protocol          = ""HTTP""
+  160 |
+  161 |   default_action {
+  162 |     type             = ""forward""
+  163 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  164 |   }
+  165 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,187,"
+  183 | resource ""aws_lb_listener"" ""https"" {
+  184 |   load_balancer_arn = aws_lb.juice_shop.arn
+  185 |   port              = 443
+  186 |   protocol          = ""HTTPS""
+> 187 |   ssl_policy        = ""ELBSecurityPolicy-TLS13-1-2-2021-06""
+  188 |   certificate_arn   = aws_iam_server_certificate.juice_shop_tls.arn
+  189 |
+  190 |   default_action {
+  191 |     type             = ""forward""
+  192 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  193 |   }
+  194 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,157,"
+> 157 | resource ""aws_lb_listener"" ""http"" {
+  158 |   load_balancer_arn = aws_lb.juice_shop.arn
+  159 |   port              = 80
+  160 |   protocol          = ""HTTP""
+  161 |
+  162 |   default_action {
+  163 |     type             = ""forward""
+  164 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  165 |   }
+  166 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,187,"
+  183 | resource ""aws_lb_listener"" ""https"" {
+  184 |   load_balancer_arn = aws_lb.juice_shop.arn
+  185 |   port              = 443
+  186 |   protocol          = ""HTTPS""
+> 187 |   ssl_policy        = ""ELBSecurityPolicy-TLS13-1-2-2021-06""
+  188 |   certificate_arn   = aws_iam_server_certificate.juice_shop_tls.arn
+  189 |
+  190 |   default_action {
+  191 |     type             = ""forward""
+  192 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  193 |   }
+  194 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+016. Insecure encryption algorithm - SSL/TLS,CWE-319,Falta la propiedad SslPolicy o está mal configurada en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:N/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/016,SAST,157,"
+> 157 | resource ""aws_lb_listener"" ""http"" {
+  158 |   load_balancer_arn = aws_lb.juice_shop.arn
+  159 |   port              = 80
+  160 |   protocol          = ""HTTP""
+  161 |
+  162 |   default_action {
+  163 |     type             = ""forward""
+  164 |     target_group_arn = aws_lb_target_group.juice_shop.arn
+  165 |   }
+  166 | }
+      ^ Col 0
+",terraform.aws_elb.f016.outdated_or_missing_tls_policy
+052. Insecure encryption algorithm,CWE-327,Uso de algoritmo de cifrado inseguro en juice-shop-paso4/lib/insecurity.ts,CVSS:4.0/AV:A/AT:N/AC:H/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/052,SAST,41,"
+> 41 | export const hash = (data: string) => crypto.createHash('md5').update(data).digest('hex')
+     ^ Col 0
+",typescript.express.f052.insecure_hash_md4
+034. Insecure generation of random numbers,CWE-338,La aplicación utiliza métodos inseguros para generar números aleatorios y los asigna a parámetros sensibles en juice-shop-paso4/lib/insecurity.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/034,SAST,53,"
+> 53 | export const denyAll = () => expressJwt({ secret: '' + Math.random() } as any)
+     ^ Col 0
+",typescript.express.f034.weak_random_secret_generation
+258. Lack of protection against deletion - ELB,CWE-463,La propiedad deletion_protection debe estar habilitada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:N/AC:L/PR:H/UI:N/AT:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U,4.6,Medium,https://db.fluidattacks.com/wek/258,SAST,121,"
+> 121 | resource ""aws_lb"" ""juice_shop"" {
+  122 |   name               = ""${var.project_name}-alb""
+  123 |   internal           = false
+  124 |   load_balancer_type = ""application""
+  125 |   security_groups    = [aws_security_group.alb.id]
+  126 |   subnets            = aws_subnet.public[*].id
+  127 |
+  128 |   tags = {
+  129 |     Project     = var.project_name
+  130 |     Environment = var.environment
+  131 |   }
+  132 | }
+      ^ Col 0
+",terraform.aws_elb.f258.deletion_protection_disabled
+258. Lack of protection against deletion - ELB,CWE-463,La propiedad deletion_protection debe estar habilitada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:N/AC:L/PR:H/UI:N/AT:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U,4.6,Medium,https://db.fluidattacks.com/wek/258,SAST,121,"
+> 121 | resource ""aws_lb"" ""juice_shop"" {
+  122 |   name               = ""${var.project_name}-alb""
+  123 |   internal           = false
+  124 |   load_balancer_type = ""application""
+  125 |   security_groups    = [aws_security_group.alb.id]
+  126 |   subnets            = aws_subnet.public[*].id
+  127 |
+  128 |   tags = {
+  129 |     Project     = var.project_name
+  130 |     Environment = var.environment
+  131 |   }
+  132 | }
+      ^ Col 0
+",terraform.aws_elb.f258.deletion_protection_disabled
+258. Lack of protection against deletion - ELB,CWE-463,La propiedad deletion_protection debe estar habilitada en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:N/AC:L/PR:H/UI:N/AT:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U,4.6,Medium,https://db.fluidattacks.com/wek/258,SAST,121,"
+> 121 | resource ""aws_lb"" ""juice_shop"" {
+  122 |   name               = ""${var.project_name}-alb""
+  123 |   internal           = false
+  124 |   load_balancer_type = ""application""
+  125 |   security_groups    = [aws_security_group.alb.id]
+  126 |   subnets            = aws_subnet.public[*].id
+  127 |
+  128 |   tags = {
+  129 |     Project     = var.project_name
+  130 |     Environment = var.environment
+  131 |   }
+  132 | }
+      ^ Col 0
+",terraform.aws_elb.f258.deletion_protection_disabled
+258. Lack of protection against deletion - ELB,CWE-463,La propiedad deletion_protection debe estar habilitada en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:N/AC:L/PR:H/UI:N/AT:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U,4.6,Medium,https://db.fluidattacks.com/wek/258,SAST,122,"
+> 122 | resource ""aws_lb"" ""juice_shop"" {
+  123 |   name               = ""${var.project_name}-alb""
+  124 |   internal           = false
+  125 |   load_balancer_type = ""application""
+  126 |   security_groups    = [aws_security_group.alb.id]
+  127 |   subnets            = aws_subnet.public[*].id
+  128 |
+  129 |   tags = {
+  130 |     Project     = var.project_name
+  131 |     Environment = var.environment
+  132 |   }
+  133 | }
+      ^ Col 0
+",terraform.aws_elb.f258.deletion_protection_disabled
+258. Lack of protection against deletion - ELB,CWE-463,La propiedad deletion_protection debe estar habilitada en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:N/AC:L/PR:H/UI:N/AT:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U,4.6,Medium,https://db.fluidattacks.com/wek/258,SAST,122,"
+> 122 | resource ""aws_lb"" ""juice_shop"" {
+  123 |   name               = ""${var.project_name}-alb""
+  124 |   internal           = false
+  125 |   load_balancer_type = ""application""
+  126 |   security_groups    = [aws_security_group.alb.id]
+  127 |   subnets            = aws_subnet.public[*].id
+  128 |
+  129 |   tags = {
+  130 |     Project     = var.project_name
+  131 |     Environment = var.environment
+  132 |   }
+  133 | }
+      ^ Col 0
+",terraform.aws_elb.f258.deletion_protection_disabled
+380. Supply Chain Attack - Docker,CWE-494,Las dependencias de Docker no están pineadas a un digest específico en juice-shop-paso4/Dockerfile,CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,1,"
+>  1 | FROM node:24 AS installer
+   2 | COPY . /juice-shop
+   3 | WORKDIR /juice-shop
+   4 | RUN npm install -g typescript@^6.0.3
+   5 | RUN npm install --omit=dev
+   6 | RUN npm dedupe --omit=dev
+   7 | RUN rm -rf frontend/node_modules
+   8 | RUN rm -rf frontend/.angular
+   9 | RUN rm -rf frontend/src/assets
+  10 | RUN mkdir logs
+  11 | RUN chown -R 65532 logs
+  12 | RUN chgrp -R 0 ftp/ frontend/dist/ logs/ data/ i18n/
+  13 | RUN chmod -R g=u ftp/ frontend/dist/ logs/ data/ i18n/
+  14 | RUN rm ftp/legal.md || true
+  15 | RUN rm i18n/*.json || true
+  16 |
+  17 | # keep version in sync with package.json
+  18 | ARG CYCLONEDX_NPM_VERSION='^2.0.0||^3.0.0||^4.0.0'
+  19 | RUN npm install -g @cyclonedx/cyclonedx-npm@$CYCLONEDX_NPM_VERSION
+  20 | RUN npm run sbom
+  21 |
+     ^ Col 0
+",docker.general.f380.unpinned_docker_image
+380. Supply Chain Attack - Docker,CWE-494,Las dependencias de Docker no están pineadas a un digest específico en juice-shop-paso4/Dockerfile,CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,22,"
+  12 | RUN chgrp -R 0 ftp/ frontend/dist/ logs/ data/ i18n/
+  13 | RUN chmod -R g=u ftp/ frontend/dist/ logs/ data/ i18n/
+  14 | RUN rm ftp/legal.md || true
+  15 | RUN rm i18n/*.json || true
+  16 |
+  17 | # keep version in sync with package.json
+  18 | ARG CYCLONEDX_NPM_VERSION='^2.0.0||^3.0.0||^4.0.0'
+  19 | RUN npm install -g @cyclonedx/cyclonedx-npm@$CYCLONEDX_NPM_VERSION
+  20 | RUN npm run sbom
+  21 |
+> 22 | FROM gcr.io/distroless/nodejs24-debian13
+  23 | ARG BUILD_DATE
+  24 | ARG VCS_REF
+  25 | LABEL maintainer=""Bjoern Kimminich <bjoern.kimminich@owasp.org>"" \
+  26 |     org.opencontainers.image.title=""OWASP Juice Shop"" \
+  27 |     org.opencontainers.image.description=""Probably the most modern and sophisticated insecure web application"" \
+  28 |     org.opencontainers.image.authors=""Bjoern Kimminich <bjoern.kimminich@owasp.org>"" \
+  29 |     org.opencontainers.image.vendor=""Open Worldwide Application Security Project"" \
+  30 |     org.opencontainers.image.documentation=""https://help.owasp-juice.shop"" \
+  31 |     org.opencontainers.image.licenses=""MIT"" \
+  32 |     org.opencontainers.image.version=""20.3.0"" \
+     ^ Col 0
+",docker.general.f380.unpinned_docker_image
+380. Supply Chain Attack - Docker,CWE-494,Las dependencias de Docker no están pineadas a un digest específico en juice-shop-paso4/infrastructure/Dockerfile,CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,6,"
+   1 | FROM node:20.19.2-bookworm-slim AS base
+   2 | RUN apt-get update && apt-get install -y --no-install-recommends \
+   3 |     dumb-init=1.2.5-* \
+   4 |     && rm -rf /var/lib/apt/lists/*
+   5 |
+>  6 | FROM node:20.19.2-bookworm AS builder
+   7 |
+   8 | WORKDIR /juice-shop
+   9 | COPY package*.json ./
+  10 | RUN npm ci --ignore-scripts
+  11 | COPY . .
+  12 | RUN npm run build && npm prune --production
+  13 |
+  14 | FROM base AS production
+  15 |
+  16 | ENV NODE_ENV=production
+  17 | WORKDIR /juice-shop
+  18 |
+  19 | COPY --from=builder --chown=node:node /juice-shop .
+  20 |
+  21 | USER node
+     ^ Col 0
+",docker.general.f380.unpinned_docker_image
+380. Supply Chain Attack - Docker,CWE-494,Las dependencias de Docker no están pineadas a un digest específico en juice-shop-paso4/infrastructure/Dockerfile,CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,1,"
+>  1 | FROM node:20.19.2-bookworm-slim AS base
+   2 | RUN apt-get update && apt-get install -y --no-install-recommends \
+   3 |     dumb-init=1.2.5-* \
+   4 |     && rm -rf /var/lib/apt/lists/*
+   5 |
+   6 | FROM node:20.19.2-bookworm AS builder
+   7 |
+   8 | WORKDIR /juice-shop
+   9 | COPY package*.json ./
+  10 | RUN npm ci --ignore-scripts
+  11 | COPY . .
+  12 | RUN npm run build && npm prune --production
+  13 |
+  14 | FROM base AS production
+  15 |
+  16 | ENV NODE_ENV=production
+  17 | WORKDIR /juice-shop
+  18 |
+  19 | COPY --from=builder --chown=node:node /juice-shop .
+  20 |
+  21 | USER node
+     ^ Col 0
+",docker.general.f380.unpinned_docker_image
+380. Supply Chain Attack - Docker,CWE-494,Las dependencias de Docker no están pineadas a un digest específico en juice-shop-paso4/test/smoke/Dockerfile,CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,1,"
+> 1 | FROM alpine
+  2 |
+  3 | RUN apk add curl
+  4 |
+  5 | COPY smoke-test.sh smoke-test.sh
+  6 |
+  7 | CMD [""sh"", ""smoke-test.sh"", ""http://app:3000""]
+    ^ Col 0
+",docker.general.f380.unpinned_docker_image
+236. Technical information leak - SourceMap,CWE-497,La propiedad sourcemap se encuentra establecida en true en juice-shop-paso4/frontend/tsconfig.base.json,CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,2.7,Low,https://db.fluidattacks.com/wek/236,SAST,9,"
+   1 | {
+   2 |   ""compileOnSave"": false,
+   3 |   ""angularCompilerOptions"": {
+   4 |     ""strictTemplates"": false
+   5 |   },
+   6 |   ""compilerOptions"": {
+   7 |     ""strict"": false,
+   8 |     ""outDir"": ""./dist/out-tsc"",
+>  9 |     ""sourceMap"": true,
+  10 |     ""declaration"": false,
+  11 |     ""moduleResolution"": ""bundler"",
+  12 |     ""emitDecoratorMetadata"": true,
+  13 |     ""experimentalDecorators"": true,
+  14 |     ""target"": ""ES2022"",
+  15 |     ""typeRoots"": [
+  16 |       ""node_modules/@types""
+  17 |     ],
+  18 |     ""lib"": [
+  19 |       ""es2020"",
+  20 |       ""dom""
+  21 |     ]
+  22 |   }
+  23 | }
+     ^ Col 0
+",json.general.f236.source_maps_enabled_in_config
+236. Technical information leak - SourceMap,CWE-497,La propiedad sourcemap se encuentra establecida en true en juice-shop-paso4/tsconfig.json,CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,2.7,Low,https://db.fluidattacks.com/wek/236,SAST,18,"
+   1 | {
+   2 |   ""ts-node"": {
+   3 |     ""compilerOptions"": {
+   4 |       ""moduleResolution"": ""node"",
+   5 |       ""ignoreDeprecations"": ""6.0""
+   6 |     }
+   7 |   },
+   8 |   ""compilerOptions"": {
+   9 |     ""rootDir"": ""./"",
+  10 |     ""outDir"": ""./build"",
+  11 |     ""allowJs"": true,
+  12 |     ""module"": ""commonjs"",
+  13 |     ""target"": ""es2020"",
+  14 |     ""moduleResolution"": ""bundler"",
+  15 |     ""paths"": {
+  16 |       ""@juice-shop/*"": [""./*""]
+  17 |     },
+> 18 |     ""sourceMap"": true,
+  19 |     ""strict"": true,
+  20 |     ""esModuleInterop"": true,
+  21 |     ""skipLibCheck"": true,
+  22 |     ""forceConsistentCasingInFileNames"": true,
+  23 |     ""resolveJsonModule"": true,
+  24 |     ""lib"": [
+  25 |       ""es2020""
+  26 |     ]
+  27 |   },
+  28 |   ""include"": [
+  29 |     ""cypress/**/*.ts"",
+  30 |     ""data/**/*.ts"",
+  31 |     ""lib/**/*.ts"",
+  32 |     ""lib/**/*.js"",
+  33 |     ""models/**/*.ts"",
+  34 |     ""routes/**/*.ts"",
+  35 |     ""test/**/*.ts"",
+  36 |     ""views/**/*.ts"",
+  37 |     ""views/**/*.js"",
+  38 |     ""rsn/**/*.ts"",
+  39 |     ""*.ts""
+  40 |   ],
+  41 |   ""exclude"": [
+  42 |     ""node_modules"",
+  43 |     ""frontend"",
+  44 |     ""dist"",
+  45 |     ""build"",
+  46 |     ""vagrant"",
+  47 |     ""data/static/codefixes/**"",
+  48 |     ""test/cypress/**"",
+  49 |     ""**/*.d.ts""
+  50 |   ]
+  51 | }
+     ^ Col 0
+",json.general.f236.source_maps_enabled_in_config
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/change-password/change-password.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,80,"
+   78 |       <mat-form-field appearance=""outline"" color=""tertiary"">
+   79 |         <mat-label>{{ 'LABEL_REPEAT_NEW_PASSWORD' | translate }}</mat-label>
+>  80 |         <input
+   81 |           id=""newPasswordRepeat""
+   82 |           [formField]=""changePasswordForm.repeatNewPassword""
+   83 |           type=""password""
+   84 |           matInput
+   85 |           autocomplete=""new-password""
+   86 |           aria-label=""Field to repeat the new password""
+   87 |         />
+   88 |         <mat-hint align=""end"">
+   89 |           {{ changePasswordModel().repeatNewPassword.length }}/20
+   90 |         </mat-hint>
+   91 |         @if (changePasswordForm.repeatNewPassword().getError('required')) {
+   92 |           <mat-error>{{ 'MANDATORY_PASSWORD_REPEAT' | translate }}</mat-error>
+   93 |         }
+   94 |         @if (changePasswordForm.repeatNewPassword().getError('notSame')) {
+   95 |           <mat-error>{{ 'PASSWORDS_NOT_MATCHING' | translate }}</mat-error>
+   96 |         }
+   97 |         @if (
+   98 |           changePasswordForm.repeatNewPassword().getError('minLength') ||
+   99 |           changePasswordForm.repeatNewPassword().getError('maxLength')
+  100 |         ) {
+  101 |           <mat-error>
+  102 |             {{ 'INVALID_PASSWORD_LENGTH' | translate: { length: '5-40' } }}
+  103 |           </mat-error>
+  104 |         }
+  105 |       </mat-form-field>
+      ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/change-password/change-password.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,32,"
+  30 |       <mat-form-field appearance=""outline"" color=""tertiary"">
+  31 |         <mat-label>{{ 'LABEL_CURRENT_PASSWORD' | translate }}</mat-label>
+> 32 |         <input
+  33 |           id=""currentPassword""
+  34 |           [formField]=""changePasswordForm.currentPassword""
+  35 |           type=""password""
+  36 |           matInput
+  37 |           autocomplete=""current-password""
+  38 |           aria-label=""Field to enter the current password""
+  39 |           placeholder=""{{ 'MANDATORY_CURRENT_PASSWORD' | translate }}""
+  40 |         />
+  41 |         @if (changePasswordForm.currentPassword().getError('required')) {
+  42 |           <mat-error>{{ 'MANDATORY_CURRENT_PASSWORD' | translate }}</mat-error>
+  43 |         }
+  44 |       </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/change-password/change-password.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,48,"
+  46 |       <mat-form-field appearance=""outline"" color=""tertiary"">
+  47 |         <mat-label>{{ 'LABEL_NEW_PASSWORD' | translate }}</mat-label>
+> 48 |         <input
+  49 |           id=""newPassword""
+  50 |           [formField]=""changePasswordForm.newPassword""
+  51 |           type=""password""
+  52 |           matInput
+  53 |           autocomplete=""new-password""
+  54 |           aria-label=""Field for the new password""
+  55 |         />
+  56 |         <mat-hint>
+  57 |           <i class=""fas fa-exclamation-circle""></i>
+  58 |           <em>{{
+  59 |             'INVALID_PASSWORD_LENGTH' | translate: { length: '5-40' }
+  60 |           }}</em>
+  61 |         </mat-hint>
+  62 |         <mat-hint align=""end"">
+  63 |           {{ changePasswordModel().newPassword.length }}/40
+  64 |         </mat-hint>
+  65 |         @if (changePasswordForm.newPassword().getError('required')) {
+  66 |           <mat-error>{{ 'MANDATORY_NEW_PASSWORD' | translate }}</mat-error>
+  67 |         }
+  68 |         @if (
+  69 |           changePasswordForm.newPassword().getError('minLength') ||
+  70 |           changePasswordForm.newPassword().getError('maxLength')
+  71 |         ) {
+  72 |           <mat-error>
+  73 |             {{ 'INVALID_PASSWORD_LENGTH' | translate: { length: '5-40' } }}
+  74 |           </mat-error>
+  75 |         }
+  76 |       </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/forgot-password/forgot-password.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,25,"
+  23 |         <mat-form-field appearance=""outline"" color=""tertiary"">
+  24 |           <mat-label>{{ 'LABEL_EMAIL' | translate }}</mat-label>
+> 25 |           <input id=""email"" [formField]=""forgotPasswordForm.email"" (input)=""findSecurityQuestion()""
+  26 |             type=""email"" matInput placeholder=""Enter your email"" aria-label=""Email address field"">
+  27 |           <mat-icon matSuffix matTooltip=""{{ 'MANDATORY_EMAIL' | translate  }}""
+  28 |             matTooltipPosition=right aria-label=""Please enter your email address to proceed"">help_outline
+  29 |           </mat-icon>
+  30 |           @if (forgotPasswordForm.email().getError('required')) {
+  31 |             <mat-error>{{ 'MANDATORY_EMAIL' | translate }}</mat-error>
+  32 |           }
+  33 |           @if (forgotPasswordForm.email().getError('email')) {
+  34 |             <mat-error>{{ 'INVALID_EMAIL' | translate }}</mat-error>
+  35 |           }
+  36 |         </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/forgot-password/forgot-password.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,44,"
+  42 |         <mat-form-field appearance=""outline"" color=""tertiary"">
+  43 |           <mat-label>{{ 'LABEL_SECURITY_QUESTION' | translate }}</mat-label>
+> 44 |           <input id=""securityAnswer"" [formField]=""forgotPasswordForm.securityQuestion"" type=""password"" matInput
+  45 |             [placeholder]=""securityQuestion() ?? ''""
+  46 |             aria-label=""Field for the answer to the security question"">
+  47 |           <mat-icon matSuffix matTooltip=""{{ 'MANDATORY_SECURITY_ANSWER' | translate  }}""
+  48 |             matTooltipPosition=right aria-label=""Please answer your selected security question"">help_outline
+  49 |           </mat-icon>
+  50 |           @if (forgotPasswordForm.securityQuestion().getError('required')) {
+  51 |             <mat-error>{{ 'MANDATORY_SECURITY_ANSWER' | translate }}</mat-error>
+  52 |           }
+  53 |         </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/forgot-password/forgot-password.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,57,"
+  55 |         <mat-form-field appearance=""outline"" color=""tertiary"" subscriptSizing=""dynamic"">
+  56 |           <mat-label>{{ 'LABEL_NEW_PASSWORD' | translate }}</mat-label>
+> 57 |           <input #password id=""newPassword"" [formField]=""forgotPasswordForm.password"" type=""password"" matInput placeholder=""""
+  58 |             aria-label=""Field for New Password"">
+  59 |           <mat-hint>
+  60 |             <i class=""fas fa-exclamation-circle""></i>
+  61 |             <em class=""hint-spacing"">{{ 'INVALID_PASSWORD_LENGTH' | translate: {length: '5-40'} }}</em>
+  62 |           </mat-hint>
+  63 |           <mat-hint align=""end"">{{password.value?.length || 0}}/20</mat-hint>
+  64 |           @if (forgotPasswordForm.password().getError('required')) {
+  65 |             <mat-error>{{ 'MANDATORY_NEW_PASSWORD' | translate }}</mat-error>
+  66 |           }
+  67 |         </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/forgot-password/forgot-password.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,71,"
+  69 |         <mat-form-field appearance=""outline"" color=""tertiary"">
+  70 |           <mat-label>{{ 'LABEL_REPEAT_NEW_PASSWORD' | translate }}</mat-label>
+> 71 |           <input #repeatPassword id=""newPasswordRepeat"" [formField]=""forgotPasswordForm.repeatPassword"" type=""password"" matInput
+  72 |             placeholder=""""
+  73 |             aria-label=""Field to confirm the new password"">
+  74 |           <mat-hint align=""end"">{{repeatPassword.value?.length || 0}}/20</mat-hint>
+  75 |           @if (forgotPasswordForm.repeatPassword().getError('required')) {
+  76 |             <mat-error>{{ 'MANDATORY_PASSWORD_REPEAT' | translate }}</mat-error>
+  77 |           }
+  78 |           @if (forgotPasswordForm.repeatPassword().getError('notSame')) {
+  79 |             <mat-error>{{ 'PASSWORDS_NOT_MATCHING' | translate }}</mat-error>
+  80 |           }
+  81 |           @if (forgotPasswordForm.repeatPassword().getError('minLength') || forgotPasswordForm.repeatPassword().getError('maxLength')) {
+  82 |             <mat-error>{{ 'INVALID_PASSWORD_LENGTH' | translate: {length: '5-40'} }}</mat-error>
+  83 |           }
+  84 |         </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/register/register.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,28,"
+  26 |       <mat-form-field appearance=""outline"" color=""tertiary"" subscriptSizing=""dynamic"">
+  27 |         <mat-label>{{'LABEL_PASSWORD' | translate}}</mat-label>
+> 28 |         <input #password id=""passwordControl"" [formField]=""registerForm.password"" (focus)=""error.set(null)""
+  29 |           type=""password"" matInput aria-label=""Field for the password"">
+  30 |         <mat-hint>
+  31 |           <i class=""fas fa-exclamation-circle""></i>
+  32 |           <em class=""hint-spacing"">{{ 'INVALID_PASSWORD_LENGTH' | translate: {length: '5-40'} }}</em>
+  33 |         </mat-hint>
+  34 |         <mat-hint align=""end"">{{password.value?.length || 0}}/20</mat-hint>
+  35 |         @if (registerForm.password().getError('required')) {
+  36 |         <mat-error>{{'MANDATORY_PASSWORD' | translate}}</mat-error>
+  37 |         }
+  38 |         @if (registerForm.password().getError('minLength') || registerForm.password().getError('maxLength')) {
+  39 |         <mat-error>{{ 'INVALID_PASSWORD_LENGTH' | translate: {length: '5-40'} }}</mat-error>
+  40 |         }
+  41 |       </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/frontend/src/app/register/register.component.html",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,45,"
+  43 |       <mat-form-field appearance=""outline"" color=""tertiary"">
+  44 |         <mat-label>{{'LABEL_PASSWORD_REPEAT' | translate}}</mat-label>
+> 45 |         <input #repeatPassword id=""repeatPasswordControl"" [formField]=""registerForm.repeatPassword""
+  46 |           (focus)=""error.set(null)"" type=""password"" matInput aria-label=""Field to confirm the password"">
+  47 |         <mat-hint align=""end"">{{repeatPassword.value?.length || 0}}/40</mat-hint>
+  48 |         @if (registerForm.repeatPassword().getError('required')) {
+  49 |         <mat-error>{{'MANDATORY_PASSWORD_REPEAT' | translate}}</mat-error>
+  50 |         }
+  51 |         @if (registerForm.repeatPassword().getError('notSame')) {
+  52 |         <mat-error>{{'PASSWORDS_NOT_MATCHING' | translate}}</mat-error>
+  53 |         }
+  54 |       </mat-form-field>
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+065. Cached form fields,CWE-525,"La aplicación no deshabilita el almacenamiento en caché de los campos de entrada, por lo que la información se almacenará en el caché del navegador en juice-shop-paso4/views/userProfile.pug",CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.1,Low,https://db.fluidattacks.com/wek/065,SAST,67,"
+  57 |                   form(action='./profile/image/url', style='margin-top: 8px; width: 90%; margin-right: auto; margin-left: auto;', method='post')
+  58 |                     .profile-field
+  59 |                       label(for='url') Image URL:
+  60 |                       input#url(type='text', name='imageUrl', placeholder='e.g. https://www.gravatar.com/avatar/_emailHash_', aria-label='Text field for the image link')
+  61 |                     button#submitUrl.fill(type='submit', style='margin-top: 8px; text-transform: capitalize;', aria-label='Button to include image from link') Link Image
+  62 |
+  63 |                div.s12.m12.l6
+  64 |                  form(action='./profile', method='post', style='width: 90%; margin-right: auto; margin-left: auto;')
+  65 |                    .profile-field
+  66 |                      label(for='email') Email:
+> 67 |                      input#email(type='email', name='email', value=email, disabled=true, style='opacity: 0.7;', aria-label='Disabled - Text field for the email')
+  68 |                    .profile-field
+  69 |                      label(for='role') Role:
+  70 |                      input#role(type='text', name='role', value=role, disabled=true, style='opacity: 0.7;', aria-label='Disabled - Text field for the role')
+  71 |                      if role === 'customer'
+  72 |                        a(href='./#/deluxe-membership', style='color: _textColor_; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 4px;')
+  73 |                          i.material-icons diamond
+  74 |                          span Become a deluxe member
+  75 |                    .profile-field
+  76 |                      label(for='username') Username:
+  77 |                      input#username(type='text', name='username', value=username, placeholder='e.g. SuperUser', aria-label='Text field for the username')
+     ^ Col 0
+",html.general.f065.form_autocomplete_on_sensitive_data
+153. Insecure or unset HTTP headers - Accept,CWE-644,El encabezado Accept permite cualquier tipo de MIME en la solicitud en juice-shop-paso4/server.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/SC:N/SI:N/SA:N/VA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/153,SAST,342,"
+  171 | function configureApp (app: ReturnType<typeof express>, seq: typeof sequelize) {
+  172 |   /* Locals */
+  173 |   app.locals.captchaId = 0
+  174 |   app.locals.captchaReqId = 1
+  175 |   app.locals.captchaBypassReqTimes = []
+  176 |   app.locals.abused_ssti_bug = false
+  177 |   app.locals.abused_ssrf_bug = false
+  178 |
+  179 |   /* Compression for all requests */
+  180 |   app.use(compression())
+  181 |
+  182 |   /* Bludgeon solution for possible CORS problems: Allow everything! */
+  183 |   app.options('*', cors())
+  184 |   app.use(cors())
+  185 |
+  186 |   /* Security middleware */
+  187 |   app.use(helmet.noSniff())
+  188 |   app.use(helmet.frameguard())
+  189 |   // app.use(helmet.xssFilter()); // = no protection from persisted XSS via RESTful API
+  190 |   app.disable('x-powered-by')
+  191 |   app.use(featurePolicy({
+  192 |     features: {
+  193 |       payment: [""'self'""]
+  194 |     }
+  195 |   }))
+  196 |
+  197 |   /* Hiring header */
+  198 |   app.use((req: Request, res: Response, next: NextFunction) => {
+  199 |     res.append('X-Recruiting', config.get('application.securityTxt.hiring'))
+  200 |     next()
+  201 |   })
+  202 |
+  203 |   /* Remove duplicate slashes from URL which allowed bypassing subsequent filters */
+  204 |   app.use((req: Request, res: Response, next: NextFunction) => {
+  205 |     req.url = req.url.replace(/[/]+/g, '/')
+  206 |     next()
+  207 |   })
+  208 |
+  209 |   /* Increase request counter metric for every request */
+  210 |   app.use(metrics.observeRequestMetricsMiddleware())
+  211 |
+  212 |   /* Security Policy */
+  213 |   const securityTxtExpiration = new Date()
+  214 |   securityTxtExpiration.setFullYear(securityTxtExpiration.getFullYear() + 1)
+  215 |   app.get(['/.well-known/security.txt', '/security.txt'], verify.accessControlChallenges())
+  216 |   app.use(['/.well-known/security.txt', '/security.txt'], securityTxt({
+  217 |     contact: config.get('application.securityTxt.contact'),
+  218 |     encryption: config.get('application.securityTxt.encryption'),
+  219 |     acknowledgements: config.get('application.securityTxt.acknowledgements'),
+  220 |     'Preferred-Languages': [...new Set(locales.map((locale: { key: string }) => locale.key.substr(0, 2)))].join(', '),
+  221 |     hiring: config.get('application.securityTxt.hiring'),
+  222 |     csaf: config.get<string>('server.baseUrl') + config.get<string>('application.securityTxt.csaf'),
+  223 |     expires: securityTxtExpiration.toUTCString()
+  224 |   }))
+  225 |
+  226 |   /* robots.txt */
+  227 |   app.use(robots({ UserAgent: '*', Disallow: '/ftp' }))
+  228 |
+  229 |   /* Check for any URLs having been called that would be expected for challenge solving without cheating */
+  230 |   app.use(antiCheat.checkForPreSolveInteractions())
+  231 |
+  232 |   /* Checks for challenges solved by retrieving a file implicitly or explicitly */
+  233 |   app.use('/assets/public/images/padding', verify.accessControlChallenges())
+  234 |   app.use('/assets/public/images/products', verify.accessControlChallenges())
+  235 |   app.use('/assets/public/images/uploads', verify.accessControlChallenges())
+  236 |   app.use('/assets/i18n', verify.accessControlChallenges())
+  237 |
+  238 |   /* Checks for challenges solved by abusing SSTi and SSRF bugs */
+  239 |   app.use('/solve/challenges/server-side', verify.serverSideChallenges())
+  240 |
+  241 |   /* Create middleware to change paths from the serve-index plugin from absolute to relative */
+  242 |   const serveIndexMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  243 |     const origEnd = res.end
+  244 |     // @ts-expect-error FIXME assignment broken due to seemingly void return value
+  245 |     res.end = function () {
+  246 |       if (arguments.length && typeof arguments[0] === 'string') {
+  247 |         const reqPath = req.originalUrl.replace(/\?.*$/, '')
+  248 |
+  249 |         const currentFolder = reqPath.split('/').pop()!
+  250 |         arguments[0] = arguments[0].replace(/a href=""([^""]+?)""/gi, function (matchString: string, matchedUrl: string) {
+  251 |           let relativePath = path.relative(reqPath, matchedUrl)
+  252 |           if (relativePath === '') {
+  253 |             relativePath = currentFolder
+  254 |           } else if (!relativePath.startsWith('.') && currentFolder !== '') {
+  255 |             relativePath = currentFolder + '/' + relativePath
+  256 |           } else {
+  257 |             relativePath = relativePath.replace('..', '.')
+  258 |           }
+  259 |           return 'a href=""' + relativePath + '""'
+  260 |         })
+  261 |       }
+  262 |       // @ts-expect-error FIXME passed argument has wrong type
+  263 |       origEnd.apply(this, arguments)
+  264 |     }
+  265 |     next()
+  266 |   }
+  267 |
+  268 |   /* /infrastructure directory browsing */
+  269 |   app.use('/infrastructure', serveIndexMiddleware, serveIndex('infrastructure', { icons: true, view: 'details', filter: (filename) => filename !== 'README.md' }))
+  270 |   app.use('/infrastructure', verify.accessControlChallenges())
+  271 |   app.use('/infrastructure', (req: Request, res: Response, next: NextFunction) => {
+  272 |     const filePath = path.resolve('infrastructure', path.normalize(req.path).replace(/^[\\/]+/, ''))
+  273 |     if (!filePath.startsWith(path.resolve('infrastructure')) || filePath.endsWith('README.md')) {
+  274 |       return res.status(403).end()
+  275 |     }
+  276 |     if (filePath.endsWith('.tf') || filePath.endsWith('.yml') || filePath.endsWith('Dockerfile')) {
+  277 |       fs.readFile(filePath, 'utf8', (err, data) => {
+  278 |         if (err) return next()
+  279 |         const cleaned = data.split('\n').filter(line => !line.trim().match(/^#\s*vuln-code-snippet\s/)).map(line => line.replace(/\s*#\s*vuln-code-snippet\s.*$/, '')).join('\n')
+  280 |         const content = filePath.endsWith('.tf') ? customizeTerraformContent(cleaned) : cleaned
+  281 |         res.type('text/plain').send(content)
+  282 |       })
+  283 |     } else {
+  284 |       express.static('infrastructure')(req, res, next)
+  285 |     }
+  286 |   })
+  287 |
+  288 |   // vuln-code-snippet start directoryListingChallenge accessLogDisclosureChallenge
+  289 |   /* /ftp directory browsing and file download */ // vuln-code-snippet neutral-line directoryListingChallenge
+  290 |   app.use('/ftp', serveIndexMiddleware, serveIndex('ftp', { icons: true })) // vuln-code-snippet vuln-line directoryListingChallenge
+  291 |   app.use('/ftp(?!/quarantine)/:file', servePublicFiles()) // vuln-code-snippet vuln-line directoryListingChallenge
+  292 |   app.use('/ftp/quarantine/:file', serveQuarantineFiles()) // vuln-code-snippet neutral-line directoryListingChallenge
+  293 |
+  294 |   app.use('/.well-known', serveIndexMiddleware, serveIndex('.well-known', { icons: true, view: 'details' }))
+  295 |   app.use('/.well-known', express.static('.well-known'))
+  296 |
+  297 |   /* /encryptionkeys directory browsing */
+  298 |   app.use('/encryptionkeys', serveIndexMiddleware, serveIndex('encryptionkeys', { icons: true, view: 'details' }))
+  299 |   app.use('/encryptionkeys/:file', serveKeyFiles())
+  300 |
+  301 |   /* /logs directory browsing */ // vuln-code-snippet neutral-line accessLogDisclosureChallenge
+  302 |   app.use('/support/logs', serveIndexMiddleware, serveIndex('logs', { icons: true, view: 'details' })) // vuln-code-snippet vuln-line accessLogDisclosureChallenge
+  303 |   app.use('/support/logs', verify.accessControlChallenges()) // vuln-code-snippet hide-line
+  304 |   app.use('/support/logs/:file', serveLogFiles()) // vuln-code-snippet vuln-line accessLogDisclosureChallenge
+  305 |
+  306 |   /* Swagger documentation for B2B v2 endpoints */
+  307 |   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+  308 |
+  309 |   /* Express 4 ships mime@1.x which predates AVIF, so .avif would be served as application/octet-stream */
+  310 |   const setStaticFileHeaders = (res: http.ServerResponse, filePath: string) => {
+  311 |     if (path.extname(filePath) === '.avif') {
+  312 |       res.setHeader('Content-Type', 'image/avif')
+  313 |     }
+  314 |   }
+  315 |
+  316 |   app.use(express.static(path.resolve('frontend/dist/frontend'), { setHeaders: setStaticFileHeaders }))
+  317 |   app.use(cookieParser('kekse'))
+  318 |   // vuln-code-snippet end directoryListingChallenge accessLogDisclosureChallenge
+  319 |
+  320 |   /* Serve vendor dependencies locally instead of from CDN */
+  321 |   app.use('/vendor/beercss', express.static(path.resolve('node_modules/beercss/dist/cdn')))
+  322 |   app.use('/vendor/material-icons', express.static(path.resolve('node_modules/material-icons/iconfont')))
+  323 |   app.use('/vendor/fontsource-roboto', express.static(path.resolve('node_modules/@fontsource/roboto')))
+  324 |
+  325 |   /* Configure and enable backend-side i18n */
+  326 |   i18n.configure({
+  327 |     locales: locales.map((locale: { key: string }) => locale.key),
+  328 |     directory: path.resolve('i18n'),
+  329 |     cookie: 'language',
+  330 |     defaultLocale: 'en',
+  331 |     autoReload: process.env.NODE_ENV !== 'test'
+  332 |   })
+  333 |   app.use(i18n.init)
+  334 |
+  335 |   app.use(bodyParser.urlencoded({ extended: true }))
+  336 |   /* File Upload */
+  337 |   app.post('/file-upload', uploadToMemory.single('file'), ensureFileIsPassed, metrics.observeFileUploadMetricsMiddleware(), checkUploadSize, checkFileType, handleZipFileUpload, handleXmlUpload, handleYamlUpload)
+  338 |   app.post('/profile/image/file', uploadToMemory.single('file'), ensureFileIsPassed, metrics.observeFileUploadMetricsMiddleware(), utils.asyncHandler(profileImageFileUpload()))
+  339 |   app.post('/profile/image/url', uploadToMemory.single('file'), utils.asyncHandler(profileImageUrlUpload()))
+  340 |   app.post('/rest/memories', uploadToDisk.single('image'), ensureFileIsPassed, security.appendUserId(), metrics.observeFileUploadMetricsMiddleware(), utils.asyncHandler(addMemory()))
+  341 |
+> 342 |   app.use(bodyParser.text({ type: '*/*' }))
+  343 |   app.use(function jsonParser (req: Request, res: Response, next: NextFunction) {
+  344 |     // @ts-expect-error FIXME intentionally saving original request in this property
+  345 |     req.rawBody = req.body
+  346 |     if (req.headers['content-type']?.includes('application/json')) {
+  347 |       if (!req.body) {
+  348 |         req.body = {}
+  349 |       }
+  350 |       if (req.body !== Object(req.body)) { // Expensive workaround for 500 errors during Frisby test run (see #640)
+  351 |         req.body = JSON.parse(req.body)
+  352 |       }
+  353 |     }
+  354 |     next()
+  355 |   })
+  356 |
+  357 |   /* HTTP request logging */
+  358 |   const accessLogStream = getStream({
+  359 |     filename: path.resolve('logs/access.log.%DATE%'),
+  360 |     date_format: 'YYYY-MM-DD',
+  361 |     audit_file: 'logs/audit.json',
+  362 |     frequency: 'daily',
+  363 |     verbose: false,
+  364 |     max_logs: '2d'
+  365 |   })
+  366 |   app.use(morgan('combined', { stream: accessLogStream }))
+  367 |
+  368 |   // vuln-code-snippet start resetPasswordMortyChallenge
+  369 |   /* Rate limiting */
+  370 |   app.enable('trust proxy')
+  371 |   app.use('/rest/user/reset-password', rateLimit({
+  372 |     windowMs: 5 * 60 * 1000,
+  373 |     max: 100,
+  374 |     keyGenerator ({ headers, ip }: { headers: any, ip: any }) { return headers['X-Forwarded-For'] ?? ip } // vuln-code-snippet vuln-line resetPasswordMortyChallenge
+  375 |   }))
+  376 |   // vuln-code-snippet end resetPasswordMortyChallenge
+  377 |
+  378 |   // vuln-code-snippet start changeProductChallenge
+  379 |   /** Authorization **/
+  380 |   /* Checks on JWT in Authorization header */ // vuln-code-snippet hide-line
+  381 |   app.use(verify.jwtChallenges()) // vuln-code-snippet hide-line
+  382 |   app.use(security.updateAuthenticatedUsers()) // vuln-code-snippet hide-line
+  383 |   /* Baskets: Unauthorized users are not allowed to access baskets */
+  384 |   app.use('/rest/basket', security.isAuthorized(), security.appendUserId())
+  385 |   /* BasketItems: API only accessible for authenticated users */
+  386 |   app.use('/api/BasketItems', security.isAuthorized())
+  387 |   app.use('/api/BasketItems/:id', security.isAuthorized())
+  388 |   /* Feedbacks: GET allowed for feedback carousel, POST allowed in order to provide feedback without being logged in */
+  389 |   app.use('/api/Feedbacks/:id', security.isAuthorized())
+  390 |   /* Users: Only POST is allowed in order to register a new user */
+  391 |   app.get('/api/Users', security.isAuthorized())
+  392 |   app.route('/api/Users/:id')
+  393 |     .get(security.isAuthorized())
+  394 |     .put(security.denyAll())
+  395 |     .delete(security.denyAll())
+  396 |   /* Products: Only GET is allowed in order to view products */ // vuln-code-snippet neutral-line changeProductChallenge
+  397 |   app.post('/api/Products', security.isAuthorized()) // vuln-code-snippet neutral-line changeProductChallenge
+  398 |   // app.put('/api/Products/:id', security.isAuthorized()) // vuln-code-snippet vuln-line changeProductChallenge
+  399 |   app.delete('/api/Products/:id', security.denyAll())
+  400 |   /* Challenges: GET list of challenges allowed. Everything else forbidden entirely */
+  401 |   app.post('/api/Challenges', security.denyAll())
+  402 |   app.use('/api/Challenges/:id', security.denyAll())
+  403 |   /* Hints: GET and PUT hints allowed. Everything else forbidden */
+  404 |   app.post('/api/Hints', security.denyAll())
+  405 |   app.route('/api/Hints/:id')
+  406 |     .get(security.denyAll())
+  407 |     .delete(security.denyAll())
+  408 |   /* Complaints: POST and GET allowed when logged in only */
+  409 |   app.get('/api/Complaints', security.isAuthorized())
+  410 |   app.post('/api/Complaints', security.isAuthorized())
+  411 |   app.use('/api/Complaints/:id', security.denyAll())
+  412 |   /* Recycles: POST and GET allowed when logged in only */
+  413 |   app.get('/api/Recycles', recycles.blockRecycleItems())
+  414 |   app.post('/api/Recycles', security.isAuthorized())
+  415 |   /* Challenge evaluation before finale takes over */
+  416 |   app.get('/api/Recycles/:id', recycles.getRecycleItem())
+  417 |   app.put('/api/Recycles/:id', security.denyAll())
+  418 |   app.delete('/api/Recycles/:id', security.denyAll())
+  419 |   /* SecurityQuestions: Only GET list of questions allowed. */
+  420 |   app.post('/api/SecurityQuestions', security.denyAll())
+  421 |   app.use('/api/SecurityQuestions/:id', security.denyAll())
+  422 |   /* SecurityAnswers: Only POST of answer allowed. */
+  423 |   app.get('/api/SecurityAnswers', security.denyAll())
+  424 |   app.use('/api/SecurityAnswers/:id', security.denyAll())
+  425 |   /* REST API */
+  426 |   app.use('/rest/user/authentication-details', security.isAuthorized())
+  427 |   app.use('/rest/basket/:id', security.isAuthorized())
+  428 |   app.use('/rest/basket/:id/order', security.isAuthorized())
+  429 |   /* Challenge evaluation before finale takes over */ // vuln-code-snippet hide-start
+  430 |   app.post('/api/Feedbacks', verify.forgedFeedbackChallenge())
+  431 |   /* Captcha verification before finale takes over */
+  432 |   app.post('/api/Feedbacks', utils.asyncHandler(verifyCaptcha()))
+  433 |   /* Captcha Bypass challenge verification */
+  434 |   app.post('/api/Feedbacks', verify.captchaBypassChallenge())
+  435 |   /* User registration challenge verifications before finale takes over */
+  436 |   app.post('/api/Users', (req: Request, res: Response, next: NextFunction) => {
+  437 |     if (req.body.email !== undefined && req.body.password !== undefined && req.body.passwordRepeat !== undefined) {
+  438 |       if (req.body.email.length !== 0 && req.body.password.length !== 0) {
+  439 |         req.body.email = req.body.email.trim()
+  440 |         req.body.password = req.body.password.trim()
+  441 |         req.body.passwordRepeat = req.body.passwordRepeat.trim()
+  442 |       } else {
+  443 |         res.status(400).send(res.__('Invalid email/password cannot be empty'))
+  444 |       }
+  445 |     }
+  446 |     next()
+  447 |   })
+  448 |   app.post('/api/Users', verify.registerAdminChallenge())
+  449 |   app.post('/api/Users', verify.passwordRepeatChallenge()) // vuln-code-snippet hide-end
+  450 |   app.post('/api/Users', verify.emptyUserRegistration())
+  451 |   /* Unauthorized users are not allowed to access B2B API */
+  452 |   app.use('/b2b/v2', security.isAuthorized())
+  453 |   /* Check if the quantity is available in stock and limit per user not exceeded, then add item to basket */
+  454 |   app.put('/api/BasketItems/:id', security.appendUserId(), utils.asyncHandler(basketItems.quantityCheckBeforeBasketItemUpdate()))
+  455 |   app.post('/api/BasketItems', security.appendUserId(), utils.asyncHandler(basketItems.quantityCheckBeforeBasketItemAddition()), utils.asyncHandler(basketItems.addBasketItem()))
+  456 |   /* Accounting users are allowed to check and update quantities */
+  457 |   app.delete('/api/Quantitys/:id', security.denyAll())
+  458 |   app.post('/api/Quantitys', security.denyAll())
+  459 |   app.use('/api/Quantitys/:id', security.isAccounting(), IpFilter(['123.456.789'], { mode: 'allow' }))
+  460 |   /* Feedbacks: Do not allow changes of existing feedback */
+  461 |   app.put('/api/Feedbacks/:id', security.denyAll())
+  462 |   /* PrivacyRequests: Only allowed for authenticated users */
+  463 |   app.use('/api/PrivacyRequests', security.isAuthorized())
+  464 |   app.use('/api/PrivacyRequests/:id', security.isAuthorized())
+  465 |   /* PaymentMethodRequests: Only allowed for authenticated users */
+  466 |   app.post('/api/Cards', security.appendUserId())
+  467 |   app.get('/api/Cards', security.appendUserId(), utils.asyncHandler(payment.getPaymentMethods()))
+  468 |   app.put('/api/Cards/:id', security.denyAll())
+  469 |   app.delete('/api/Cards/:id', security.appendUserId(), utils.asyncHandler(payment.delPaymentMethodById()))
+  470 |   app.get('/api/Cards/:id', security.appendUserId(), utils.asyncHandler(payment.getPaymentMethodById()))
+  471 |   /* PrivacyRequests: Only POST allowed for authenticated users */
+  472 |   app.post('/api/PrivacyRequests', security.isAuthorized())
+  473 |   app.get('/api/PrivacyRequests', security.denyAll())
+  474 |   app.use('/api/PrivacyRequests/:id', security.denyAll())
+  475 |
+  476 |   app.post('/api/Addresss', security.appendUserId())
+  477 |   app.get('/api/Addresss', security.appendUserId(), utils.asyncHandler(address.getAddress()))
+  478 |   app.put('/api/Addresss/:id', security.appendUserId())
+  479 |   app.delete('/api/Addresss/:id', security.appendUserId(), utils.asyncHandler(address.delAddressById()))
+  480 |   app.get('/api/Addresss/:id', security.appendUserId(), utils.asyncHandler(address.getAddressById()))
+  481 |   app.get('/api/Deliverys', utils.asyncHandler(delivery.getDeliveryMethods()))
+  482 |   app.get('/api/Deliverys/:id', utils.asyncHandler(delivery.getDeliveryMethod()))
+  483 |   // vuln-code-snippet end changeProductChallenge
+  484 |
+  485 |   /* Verify the 2FA Token */
+  486 |   app.post('/rest/2fa/verify',
+  487 |     rateLimit({ windowMs: 5 * 60 * 1000, max: 100, validate: false }),
+  488 |     utils.asyncHandler(twoFactorAuth.verify)
+  489 |   )
+  490 |   /* Check 2FA Status for the current User */
+  491 |   app.get('/rest/2fa/status', security.isAuthorized(), utils.asyncHandler(twoFactorAuth.status))
+  492 |   /* Enable 2FA for the current User */
+  493 |   app.post('/rest/2fa/setup',
+  494 |     rateLimit({ windowMs: 5 * 60 * 1000, max: 100, validate: false }),
+  495 |     security.isAuthorized(),
+  496 |     utils.asyncHandler(twoFactorAuth.setup)
+  497 |   )
+  498 |   /* Disable 2FA Status for the current User */
+  499 |   app.post('/rest/2fa/disable',
+  500 |     rateLimit({ windowMs: 5 * 60 * 1000, max: 100, validate: false }),
+  501 |     security.isAuthorized(),
+  502 |     utils.asyncHandler(twoFactorAuth.disable)
+  503 |   )
+  504 |   /* Verifying DB related challenges can be postponed until the next request for challenges is coming via finale */
+  505 |   app.use(verify.databaseRelatedChallenges())
+  506 |
+  507 |   // vuln-code-snippet start registerAdminChallenge
+  508 |   /* Generated API endpoints */
+  509 |   finale.initialize({ app, sequelize: seq })
+  510 |
+  511 |   const autoModels = [
+  512 |     { name: 'User', exclude: ['password', 'totpSecret'], model: UserModel },
+  513 |     { name: 'Product', exclude: [], model: ProductModel },
+  514 |     { name: 'Feedback', exclude: [], model: FeedbackModel },
+  515 |     { name: 'BasketItem', exclude: [], model: BasketItemModel },
+  516 |     { name: 'Challenge', exclude: [], model: ChallengeModel, include: [ChallengeDependencyModel] },
+  517 |     { name: 'Complaint', exclude: [], model: ComplaintModel },
+  518 |     { name: 'Recycle', exclude: [], model: RecycleModel },
+  519 |     { name: 'SecurityQuestion', exclude: [], model: SecurityQuestionModel },
+  520 |     { name: 'SecurityAnswer', exclude: [], model: SecurityAnswerModel },
+  521 |     { name: 'Address', exclude: [], model: AddressModel },
+  522 |     { name: 'PrivacyRequest', exclude: [], model: PrivacyRequestModel },
+  523 |     { name: 'Card', exclude: [], model: CardModel },
+  524 |     { name: 'Quantity', exclude: [], model: QuantityModel },
+  525 |     { name: 'Hint', exclude: [], model: HintModel }
+  526 |   ]
+  527 |
+  528 |   for (const { name, exclude, model, include } of autoModels) {
+  529 |     const resource = finale.resource({
+  530 |       model,
+  531 |       endpoints: [`/api/${name}s`, `/api/${name}s/:id`],
+  532 |       excludeAttributes: exclude,
+  533 |       pagination: false,
+  534 |       include
+  535 |     })
+  536 |
+  537 |     // create a wallet when a new user is registered using API
+  538 |     if (name === 'User') { // vuln-code-snippet neutral-line registerAdminChallenge
+  539 |       resource.create.send.before((req: Request, res: Response, context: { instance: { id: any }, continue: any }) => { // vuln-code-snippet vuln-line registerAdminChallenge
+  540 |         WalletModel.create({ UserId: context.instance.id }).catch((err: unknown) => {
+  541 |           console.log(err)
+  542 |         })
+  543 |         return context.continue // vuln-code-snippet neutral-line registerAdminChallenge
+  544 |       }) // vuln-code-snippet neutral-line registerAdminChallenge
+  545 |     } // vuln-code-snippet neutral-line registerAdminChallenge
+  546 |     // vuln-code-snippet end registerAdminChallenge
+  547 |
+  548 |     // translate challenge descriptions on-the-fly
+  549 |     if (name === 'Challenge') {
+  550 |       resource.list.fetch.after((req: Request, res: Response, context: { instance: string | any[], continue: any }) => {
+  551 |         for (let i = 0; i < context.instance.length; i++) {
+  552 |           let description = context.instance[i].description
+  553 |           if (description?.includes('<em>(This challenge is <strong>')) {
+  554 |             const warning = description.substring(description.indexOf(' <em>(This challenge is <strong>'))
+  555 |             description = description.substring(0, description.indexOf(' <em>(This challenge is <strong>'))
+  556 |             context.instance[i].description = req.__(description) + req.__(warning)
+  557 |           } else {
+  558 |             context.instance[i].description = req.__(description)
+  559 |           }
+  560 |         }
+  561 |         return context.continue
+  562 |       })
+  563 |       resource.read.send.before((req: Request, res: Response, context: { instance: { description: string, hint: string }, continue: any }) => {
+  564 |         context.instance.description = req.__(context.instance.description)
+  565 |         return context.continue
+  566 |       })
+  567 |     }
+  568 |
+  569 |     // translate security questions on-the-fly
+  570 |     if (name === 'SecurityQuestion') {
+  571 |       resource.list.fetch.after((req: Request, res: Response, context: { instance: string | any[], continue: any }) => {
+  572 |         for (let i = 0; i < context.instance.length; i++) {
+  573 |           context.instance[i].question = req.__(context.instance[i].question)
+  574 |         }
+  575 |         return context.continue
+  576 |       })
+  577 |       resource.read.send.before((req: Request, res: Response, context: { instance: { question: string }, continue: any }) => {
+  578 |         context.instance.question = req.__(context.instance.question)
+  579 |         return context.continue
+  580 |       })
+  581 |     }
+  582 |
+  583 |     // translate hints on-the-fly
+  584 |     if (name === 'Hint') {
+  585 |       resource.list.fetch.after((req: Request, res: Response, context: { instance: string | any[], continue: any }) => {
+  586 |         for (let i = 0; i < context.instance.length; i++) {
+  587 |           context.instance[i].text = req.__(context.instance[i].text)
+  588 |         }
+  589 |         return context.continue
+  590 |       })
+  591 |       resource.read.send.before((req: Request, res: Response, context: { instance: { text: string }, continue: any }) => {
+  592 |         context.instance.text = req.__(context.instance.text)
+  593 |         return context.continue
+  594 |       })
+  595 |     }
+  596 |
+  597 |     // translate product names and descriptions on-the-fly
+  598 |     if (name === 'Product') {
+  599 |       resource.list.fetch.after((req: Request, res: Response, context: { instance: any[], continue: any }) => {
+  600 |         for (let i = 0; i < context.instance.length; i++) {
+  601 |           context.instance[i].name = req.__(context.instance[i].name)
+  602 |           context.instance[i].description = req.__(context.instance[i].description)
+  603 |         }
+  604 |         return context.continue
+  605 |       })
+  606 |       resource.read.send.before((req: Request, res: Response, context: { instance: { name: string, description: string }, continue: any }) => {
+  607 |         context.instance.name = req.__(context.instance.name)
+  608 |         context.instance.description = req.__(context.instance.description)
+  609 |         return context.continue
+  610 |       })
+  611 |     }
+  612 |
+  613 |     // fix the api difference between finale (fka epilogue) and previously used sequlize-restful
+  614 |     resource.all.send.before((req: Request, res: Response, context: { instance: { status: string, data: any }, continue: any }) => {
+  615 |       context.instance = {
+  616 |         status: 'success',
+  617 |         data: context.instance
+  618 |       }
+  619 |       return context.continue
+  620 |     })
+  621 |   }
+  622 |
+  623 |   /* Custom Restful API */
+  624 |   app.post('/rest/user/login', login())
+  625 |   app.get('/rest/user/change-password', utils.asyncHandler(changePassword()))
+  626 |   app.post('/rest/user/reset-password', utils.asyncHandler(resetPassword()))
+  627 |   app.get('/rest/user/security-question', utils.asyncHandler(securityQuestion()))
+  628 |   app.get('/rest/user/whoami', utils.asyncHandler(retrieveLoggedInUser()))
+  629 |   app.get('/rest/user/authentication-details', utils.asyncHandler(authenticatedUsers()))
+  630 |   app.get('/rest/products/search', utils.asyncHandler(searchProducts()))
+  631 |   app.get('/rest/basket/:id', utils.asyncHandler(retrieveBasket()))
+  632 |   app.post('/rest/basket/:id/checkout', placeOrder())
+  633 |   app.put('/rest/basket/:id/coupon/:coupon', utils.asyncHandler(applyCoupon()))
+  634 |   app.get('/rest/admin/application-version', utils.asyncHandler(retrieveAppVersion()))
+  635 |   app.get('/rest/admin/application-configuration', utils.asyncHandler(retrieveAppConfiguration()))
+  636 |   app.get('/rest/repeat-notification', utils.asyncHandler(repeatNotification()))
+  637 |   app.get('/rest/continue-code', utils.asyncHandler(continueCode()))
+  638 |   app.get('/rest/continue-code-findIt', utils.asyncHandler(continueCodeFindIt()))
+  639 |   app.get('/rest/continue-code-fixIt', utils.asyncHandler(continueCodeFixIt()))
+  640 |   app.put('/rest/continue-code-findIt/apply/:continueCode', utils.asyncHandler(restoreProgress.restoreProgressFindIt()))
+  641 |   app.put('/rest/continue-code-fixIt/apply/:continueCode', utils.asyncHandler(restoreProgress.restoreProgressFixIt()))
+  642 |   app.put('/rest/continue-code/apply/:continueCode', utils.asyncHandler(restoreProgress.restoreProgress()))
+  643 |   app.get('/rest/captcha', utils.asyncHandler(captchas()))
+  644 |   app.get('/rest/image-captcha', utils.asyncHandler(imageCaptchas()))
+  645 |   app.get('/rest/track-order/:id', trackOrder())
+  646 |   app.get('/rest/country-mapping', utils.asyncHandler(countryMapping()))
+  647 |   app.get('/rest/saveLoginIp', utils.asyncHandler(saveLoginIp()))
+  648 |   app.post('/rest/user/data-export', security.appendUserId(), utils.asyncHandler(verifyImageCaptcha()))
+  649 |   app.post('/rest/user/data-export', security.appendUserId(), utils.asyncHandler(dataExport()))
+  650 |   app.get('/rest/languages', utils.asyncHandler(getLanguageList()))
+  651 |   app.get('/rest/order-history', utils.asyncHandler(orderHistory()))
+  652 |   app.get('/rest/order-history/orders', security.isAccounting(), utils.asyncHandler(allOrders()))
+  653 |   app.put('/rest/order-history/:id/delivery-status', security.isAccounting(), utils.asyncHandler(toggleDeliveryStatus()))
+  654 |   app.get('/rest/wallet/balance', security.appendUserId(), utils.asyncHandler(getWalletBalance()))
+  655 |   app.put('/rest/wallet/balance', security.appendUserId(), utils.asyncHandler(addWalletBalance()))
+  656 |   app.get('/rest/deluxe-membership', deluxeMembershipStatus())
+  657 |   app.post('/rest/deluxe-membership', security.appendUserId(), utils.asyncHandler(upgradeToDeluxe()))
+  658 |   app.get('/rest/memories', utils.asyncHandler(getMemories()))
+  659 |   /* NoSQL API endpoints */
+  660 |   app.get('/rest/products/:id/reviews', showProductReviews())
+  661 |   app.put('/rest/products/:id/reviews', utils.asyncHandler(createProductReviews()))
+  662 |   app.patch('/rest/products/reviews', security.isAuthorized(), updateProductReviews())
+  663 |   app.post('/rest/products/reviews', security.isAuthorized(), utils.asyncHandler(likeProductReviews()))
+  664 |
+  665 |   /* Chat API endpoint */
+  666 |   app.post('/rest/chat', utils.asyncHandler(chat()))
+  667 |
+  668 |   /* Web3 API endpoints */
+  669 |   app.post('/rest/web3/submitKey', utils.asyncHandler(checkKeys()))
+  670 |   app.get('/rest/web3/nftUnlocked', nftUnlocked())
+  671 |   app.get('/rest/web3/nftMintListen', utils.asyncHandler(nftMintListener()))
+  672 |   app.post('/rest/web3/walletNFTVerify', walletNFTVerify())
+  673 |   app.post('/rest/web3/walletExploitAddress', utils.asyncHandler(contractExploitListener()))
+  674 |
+  675 |   /* B2B Order API */
+  676 |   app.post('/b2b/v2/orders', b2bOrder())
+  677 |
+  678 |   /* File Serving */
+  679 |   app.get('/the/devs/are/so/funny/they/hid/an/easter/egg/within/the/easter/egg', serveEasterEgg())
+  680 |   app.get('/this/page/is/hidden/behind/an/incredibly/high/paywall/that/could/only/be/unlocked/by/sending/1btc/to/us', servePremiumContent())
+  681 |   app.get('/we/may/also/instruct/you/to/refuse/all/reasonably/necessary/responsibility', servePrivacyPolicyProof())
+  682 |
+  683 |   /* Route for dataerasure page */
+  684 |   app.use('/dataerasure', dataErasure)
+  685 |
+  686 |   /* Route for redirects */
+  687 |   app.get('/redirect', performRedirect())
+  688 |
+  689 |   /* Routes for promotion video page */
+  690 |   app.get('/promotion', promotionVideo())
+  691 |   app.get('/video', getVideo())
+  692 |
+  693 |   /* Routes for profile page */
+  694 |   app.get('/profile', utils.asyncHandler(getUserProfile()))
+  695 |   app.post('/profile', utils.asyncHandler(updateUserProfile()))
+  696 |
+  697 |   /* Route for vulnerable code snippets */
+  698 |   app.get('/snippets/:challenge', utils.asyncHandler(serveCodeSnippet()))
+  699 |   app.post('/snippets/verdict', utils.asyncHandler(checkVulnLines()))
+  700 |   app.get('/snippets/fixes/:key', utils.asyncHandler(serveCodeFixes()))
+  701 |   app.post('/snippets/fixes', utils.asyncHandler(checkCorrectFix()))
+  702 |
+  703 |   /* Serve metrics before the Angular catch-all so the route is reachable in all environments */
+  704 |   app.get('/metrics', utils.asyncHandler(metrics.serveMetrics()))
+  705 |
+  706 |   app.use(utils.asyncHandler(serveAngularClient()))
+  707 |
+  708 |   /* Error Handling */
+  709 |   app.use(verify.errorHandlingChallenge())
+  710 |   app.use(errorhandler())
+  711 | }
+      ^ Col 0
+",typescript.express.f153.accepts_any_mime_header
+372. Use of an insecure channel - HTTP,CWE-650,El TargetGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/372,SAST,137,"
+  134 | resource ""aws_lb_target_group"" ""juice_shop"" {
+  135 |   name        = ""${var.project_name}-tg""
+  136 |   port        = 3000
+> 137 |   protocol    = ""HTTP""
+  138 |   vpc_id      = aws_vpc.main.id
+  139 |   target_type = ""ip""
+  140 |
+  141 |   health_check {
+  142 |     path                = ""/rest/admin/application-version""
+  143 |     healthy_threshold   = 2
+  144 |     unhealthy_threshold = 3
+  145 |     timeout             = 5
+  146 |     interval            = 30
+  147 |     matcher             = ""200""
+  148 |   }
+  149 |
+  150 |   tags = {
+  151 |     Project     = var.project_name
+  152 |     Environment = var.environment
+  153 |   }
+  154 | }
+      ^ Col 0
+",terraform.aws_elb.f372.insecure_http_protocol
+372. Use of an insecure channel - HTTP,CWE-650,El TargetGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/372,SAST,137,"
+  134 | resource ""aws_lb_target_group"" ""juice_shop"" {
+  135 |   name        = ""${var.project_name}-tg""
+  136 |   port        = 3000
+> 137 |   protocol    = ""HTTP""
+  138 |   vpc_id      = aws_vpc.main.id
+  139 |   target_type = ""ip""
+  140 |
+  141 |   health_check {
+  142 |     path                = ""/rest/admin/application-version""
+  143 |     healthy_threshold   = 2
+  144 |     unhealthy_threshold = 3
+  145 |     timeout             = 5
+  146 |     interval            = 30
+  147 |     matcher             = ""200""
+  148 |   }
+  149 |
+  150 |   tags = {
+  151 |     Project     = var.project_name
+  152 |     Environment = var.environment
+  153 |   }
+  154 | }
+      ^ Col 0
+",terraform.aws_elb.f372.insecure_http_protocol
+372. Use of an insecure channel - HTTP,CWE-650,El TargetGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/372,SAST,137,"
+  134 | resource ""aws_lb_target_group"" ""juice_shop"" {
+  135 |   name        = ""${var.project_name}-tg""
+  136 |   port        = 3000
+> 137 |   protocol    = ""HTTP""
+  138 |   vpc_id      = aws_vpc.main.id
+  139 |   target_type = ""ip""
+  140 |
+  141 |   health_check {
+  142 |     path                = ""/rest/admin/application-version""
+  143 |     healthy_threshold   = 2
+  144 |     unhealthy_threshold = 3
+  145 |     timeout             = 5
+  146 |     interval            = 30
+  147 |     matcher             = ""200""
+  148 |   }
+  149 |
+  150 |   tags = {
+  151 |     Project     = var.project_name
+  152 |     Environment = var.environment
+  153 |   }
+  154 | }
+      ^ Col 0
+",terraform.aws_elb.f372.insecure_http_protocol
+372. Use of an insecure channel - HTTP,CWE-650,El TargetGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/372,SAST,138,"
+  135 | resource ""aws_lb_target_group"" ""juice_shop"" {
+  136 |   name        = ""${var.project_name}-tg""
+  137 |   port        = 3000
+> 138 |   protocol    = ""HTTP""
+  139 |   vpc_id      = aws_vpc.main.id
+  140 |   target_type = ""ip""
+  141 |
+  142 |   health_check {
+  143 |     path                = ""/rest/admin/application-version""
+  144 |     healthy_threshold   = 2
+  145 |     unhealthy_threshold = 3
+  146 |     timeout             = 5
+  147 |     interval            = 30
+  148 |     matcher             = ""200""
+  149 |   }
+  150 |
+  151 |   tags = {
+  152 |     Project     = var.project_name
+  153 |     Environment = var.environment
+  154 |   }
+  155 | }
+      ^ Col 0
+",terraform.aws_elb.f372.insecure_http_protocol
+372. Use of an insecure channel - HTTP,CWE-650,El TargetGroup debería usar un protocolo seguro (HTTPS) en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:N/AT:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.4,Low,https://db.fluidattacks.com/wek/372,SAST,138,"
+  135 | resource ""aws_lb_target_group"" ""juice_shop"" {
+  136 |   name        = ""${var.project_name}-tg""
+  137 |   port        = 3000
+> 138 |   protocol    = ""HTTP""
+  139 |   vpc_id      = aws_vpc.main.id
+  140 |   target_type = ""ip""
+  141 |
+  142 |   health_check {
+  143 |     path                = ""/rest/admin/application-version""
+  144 |     healthy_threshold   = 2
+  145 |     unhealthy_threshold = 3
+  146 |     timeout             = 5
+  147 |     interval            = 30
+  148 |     matcher             = ""200""
+  149 |   }
+  150 |
+  151 |   tags = {
+  152 |     Project     = var.project_name
+  153 |     Environment = var.environment
+  154 |   }
+  155 | }
+      ^ Col 0
+",terraform.aws_elb.f372.insecure_http_protocol
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_1.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,58,"
+   2 |   nginx:
+   3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+  43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+> 58 |     image: mongo:6.0.18
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_1.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,43,"
+   2 |   nginx:
+   3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+> 43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+  58 |     image: mongo:6.0.18
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_1.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,3,"
+   2 |   nginx:
+>  3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+  43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+  58 |     image: mongo:6.0.18
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_1.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,20,"
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+> 20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_2.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,58,"
+   2 |   nginx:
+   3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+  43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+> 58 |     image: mongo:latest
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_2.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,43,"
+   2 |   nginx:
+   3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+> 43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+  58 |     image: mongo:latest
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_2.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,3,"
+   2 |   nginx:
+>  3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+  43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+  58 |     image: mongo:latest
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_2.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,20,"
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+> 20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_3_correct.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,58,"
+   2 |   nginx:
+   3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+  43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+> 58 |     image: mongo:8.0.0
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_3_correct.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,43,"
+   2 |   nginx:
+   3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+> 43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+  58 |     image: mongo:8.0.0
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_3_correct.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,3,"
+   2 |   nginx:
+>  3 |     image: nginx:1.28.0-alpine
+   4 |     container_name: juice-shop-proxy
+   5 |     restart: unless-stopped
+   6 |     ports:
+   7 |       - ""80:80""
+   8 |       - ""443:443""
+   9 |     volumes:
+  10 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  11 |     depends_on:
+  12 |       - juice-shop
+  13 |     networks:
+  14 |       - juice-shop-net
+  15 |
+  16 |   juice-shop:
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+  20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+  41 |
+  42 |   redis:
+  43 |     image: redis:7.4.4-alpine
+  44 |     container_name: juice-shop-redis
+  45 |     restart: unless-stopped
+  46 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  47 |     healthcheck:
+  48 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  49 |       interval: 10s
+  50 |       timeout: 5s
+  51 |       retries: 3
+  52 |     expose:
+  53 |       - ""6379""
+  54 |     networks:
+  55 |       - juice-shop-net
+  56 |
+  57 |   mongo:
+  58 |     image: mongo:8.0.0
+  59 |     container_name: juice-shop-mongo
+  60 |     restart: unless-stopped
+  61 |     healthcheck:
+  62 |       test: [""CMD"", ""mongosh"", ""--eval"", ""db.adminCommand('ping')""]
+  63 |       interval: 10s
+  64 |       timeout: 5s
+  65 |       retries: 3
+  66 |     environment:
+  67 |       MONGO_INITDB_DATABASE: juiceshop
+  68 |     expose:
+  69 |       - ""27017""
+  70 |     volumes:
+  71 |       - mongo-data:/data/db
+  72 |     networks:
+  73 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/data/static/codefixes/vulnerableDockerImageChallenge_3_correct.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,20,"
+  17 |     build:
+  18 |       context: ../
+  19 |       dockerfile: infrastructure/Dockerfile
+> 20 |     image: juice-shop:latest
+  21 |     container_name: juice-shop-app
+  22 |     restart: unless-stopped
+  23 |     expose:
+  24 |       - ""3000""
+  25 |     environment:
+  26 |       - NODE_ENV=production
+  27 |       - REDIS_URL=redis://redis:6379
+  28 |     depends_on:
+  29 |       redis:
+  30 |         condition: service_healthy
+  31 |       mongo:
+  32 |         condition: service_healthy
+  33 |     volumes:
+  34 |       - juice-shop-data:/juice-shop/data/sqlite
+  35 |     networks:
+  36 |       - juice-shop-net
+  37 |     deploy:
+  38 |       resources:
+  39 |         limits:
+  40 |           memory: 512M
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/docker-compose.test.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,7,"
+  1 | services:
+  2 |   sut:
+  3 |     build: ./test/smoke/
+  4 |     links:
+  5 |       - app
+  6 |   app:
+> 7 |     image: bkimminich/juice-shop:latest
+  8 |     build: ./
+    ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/infrastructure/docker-compose.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,59,"
+   3 |   nginx:
+   4 |     image: nginx:1.28.0-alpine
+   5 |     container_name: juice-shop-proxy
+   6 |     restart: unless-stopped
+   7 |     ports:
+   8 |       - ""80:80""
+   9 |       - ""443:443""
+  10 |     volumes:
+  11 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  12 |     depends_on:
+  13 |       - juice-shop
+  14 |     networks:
+  15 |       - juice-shop-net
+  16 |
+  17 |   juice-shop:
+  18 |     build:
+  19 |       context: ../
+  20 |       dockerfile: infrastructure/Dockerfile
+  21 |     image: juice-shop:latest
+  22 |     container_name: juice-shop-app
+  23 |     restart: unless-stopped
+  24 |     expose:
+  25 |       - ""3000""
+  26 |     environment:
+  27 |       - NODE_ENV=production
+  28 |       - REDIS_URL=redis://redis:6379
+  29 |     depends_on:
+  30 |       redis:
+  31 |         condition: service_healthy
+  32 |       mongo:
+  33 |         condition: service_healthy
+  34 |     volumes:
+  35 |       - juice-shop-data:/juice-shop/data/sqlite
+  36 |     networks:
+  37 |       - juice-shop-net
+  38 |     deploy:
+  39 |       resources:
+  40 |         limits:
+  41 |           memory: 512M
+  42 |
+  43 |   redis:
+  44 |     image: redis:7.4.4-alpine
+  45 |     container_name: juice-shop-redis
+  46 |     restart: unless-stopped
+  47 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  48 |     healthcheck:
+  49 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  50 |       interval: 10s
+  51 |       timeout: 5s
+  52 |       retries: 3
+  53 |     expose:
+  54 |       - ""6379""
+  55 |     networks:
+  56 |       - juice-shop-net
+  57 |
+  58 |   mongo:
+> 59 |     image: mongo:4.4.29 # vuln-code-snippet vuln-line vulnerableDockerImageChallenge
+  60 |     container_name: juice-shop-mongo
+  61 |     restart: unless-stopped
+  62 |     healthcheck:
+  63 |       test: [""CMD"", ""mongo"", ""--eval"", ""db.adminCommand('ping')""]
+  64 |       interval: 10s
+  65 |       timeout: 5s
+  66 |       retries: 3
+  67 |     environment:
+  68 |       MONGO_INITDB_DATABASE: juiceshop
+  69 |     expose:
+  70 |       - ""27017""
+  71 |     volumes:
+  72 |       - mongo-data:/data/db
+  73 |     networks:
+  74 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/infrastructure/docker-compose.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,44,"
+   3 |   nginx:
+   4 |     image: nginx:1.28.0-alpine
+   5 |     container_name: juice-shop-proxy
+   6 |     restart: unless-stopped
+   7 |     ports:
+   8 |       - ""80:80""
+   9 |       - ""443:443""
+  10 |     volumes:
+  11 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  12 |     depends_on:
+  13 |       - juice-shop
+  14 |     networks:
+  15 |       - juice-shop-net
+  16 |
+  17 |   juice-shop:
+  18 |     build:
+  19 |       context: ../
+  20 |       dockerfile: infrastructure/Dockerfile
+  21 |     image: juice-shop:latest
+  22 |     container_name: juice-shop-app
+  23 |     restart: unless-stopped
+  24 |     expose:
+  25 |       - ""3000""
+  26 |     environment:
+  27 |       - NODE_ENV=production
+  28 |       - REDIS_URL=redis://redis:6379
+  29 |     depends_on:
+  30 |       redis:
+  31 |         condition: service_healthy
+  32 |       mongo:
+  33 |         condition: service_healthy
+  34 |     volumes:
+  35 |       - juice-shop-data:/juice-shop/data/sqlite
+  36 |     networks:
+  37 |       - juice-shop-net
+  38 |     deploy:
+  39 |       resources:
+  40 |         limits:
+  41 |           memory: 512M
+  42 |
+  43 |   redis:
+> 44 |     image: redis:7.4.4-alpine
+  45 |     container_name: juice-shop-redis
+  46 |     restart: unless-stopped
+  47 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  48 |     healthcheck:
+  49 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  50 |       interval: 10s
+  51 |       timeout: 5s
+  52 |       retries: 3
+  53 |     expose:
+  54 |       - ""6379""
+  55 |     networks:
+  56 |       - juice-shop-net
+  57 |
+  58 |   mongo:
+  59 |     image: mongo:4.4.29 # vuln-code-snippet vuln-line vulnerableDockerImageChallenge
+  60 |     container_name: juice-shop-mongo
+  61 |     restart: unless-stopped
+  62 |     healthcheck:
+  63 |       test: [""CMD"", ""mongo"", ""--eval"", ""db.adminCommand('ping')""]
+  64 |       interval: 10s
+  65 |       timeout: 5s
+  66 |       retries: 3
+  67 |     environment:
+  68 |       MONGO_INITDB_DATABASE: juiceshop
+  69 |     expose:
+  70 |       - ""27017""
+  71 |     volumes:
+  72 |       - mongo-data:/data/db
+  73 |     networks:
+  74 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/infrastructure/docker-compose.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,4,"
+   3 |   nginx:
+>  4 |     image: nginx:1.28.0-alpine
+   5 |     container_name: juice-shop-proxy
+   6 |     restart: unless-stopped
+   7 |     ports:
+   8 |       - ""80:80""
+   9 |       - ""443:443""
+  10 |     volumes:
+  11 |       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  12 |     depends_on:
+  13 |       - juice-shop
+  14 |     networks:
+  15 |       - juice-shop-net
+  16 |
+  17 |   juice-shop:
+  18 |     build:
+  19 |       context: ../
+  20 |       dockerfile: infrastructure/Dockerfile
+  21 |     image: juice-shop:latest
+  22 |     container_name: juice-shop-app
+  23 |     restart: unless-stopped
+  24 |     expose:
+  25 |       - ""3000""
+  26 |     environment:
+  27 |       - NODE_ENV=production
+  28 |       - REDIS_URL=redis://redis:6379
+  29 |     depends_on:
+  30 |       redis:
+  31 |         condition: service_healthy
+  32 |       mongo:
+  33 |         condition: service_healthy
+  34 |     volumes:
+  35 |       - juice-shop-data:/juice-shop/data/sqlite
+  36 |     networks:
+  37 |       - juice-shop-net
+  38 |     deploy:
+  39 |       resources:
+  40 |         limits:
+  41 |           memory: 512M
+  42 |
+  43 |   redis:
+  44 |     image: redis:7.4.4-alpine
+  45 |     container_name: juice-shop-redis
+  46 |     restart: unless-stopped
+  47 |     command: [""redis-server"", ""--maxmemory"", ""128mb"", ""--maxmemory-policy"", ""allkeys-lru""]
+  48 |     healthcheck:
+  49 |       test: [""CMD"", ""redis-cli"", ""ping""]
+  50 |       interval: 10s
+  51 |       timeout: 5s
+  52 |       retries: 3
+  53 |     expose:
+  54 |       - ""6379""
+  55 |     networks:
+  56 |       - juice-shop-net
+  57 |
+  58 |   mongo:
+  59 |     image: mongo:4.4.29 # vuln-code-snippet vuln-line vulnerableDockerImageChallenge
+  60 |     container_name: juice-shop-mongo
+  61 |     restart: unless-stopped
+  62 |     healthcheck:
+  63 |       test: [""CMD"", ""mongo"", ""--eval"", ""db.adminCommand('ping')""]
+  64 |       interval: 10s
+  65 |       timeout: 5s
+  66 |       retries: 3
+  67 |     environment:
+  68 |       MONGO_INITDB_DATABASE: juiceshop
+  69 |     expose:
+  70 |       - ""27017""
+  71 |     volumes:
+  72 |       - mongo-data:/data/db
+  73 |     networks:
+  74 |       - juice-shop-net
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+380. Supply Chain Attack - Docker,CWE-749,Asegúrese de especificar un digest para la imagen del container en juice-shop-paso4/infrastructure/docker-compose.yml,CVSS:4.0/AT:N/AV:N/AC:H/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/380,SAST,21,"
+  18 |     build:
+  19 |       context: ../
+  20 |       dockerfile: infrastructure/Dockerfile
+> 21 |     image: juice-shop:latest
+  22 |     container_name: juice-shop-app
+  23 |     restart: unless-stopped
+  24 |     expose:
+  25 |       - ""3000""
+  26 |     environment:
+  27 |       - NODE_ENV=production
+  28 |       - REDIS_URL=redis://redis:6379
+  29 |     depends_on:
+  30 |       redis:
+  31 |         condition: service_healthy
+  32 |       mongo:
+  33 |         condition: service_healthy
+  34 |     volumes:
+  35 |       - juice-shop-data:/juice-shop/data/sqlite
+  36 |     networks:
+  37 |       - juice-shop-net
+  38 |     deploy:
+  39 |       resources:
+  40 |         limits:
+  41 |           memory: 512M
+     ^ Col 0
+",yaml.docker_compose.f380.missing_image_digest
+029. Inadequate file size control,CWE-770,El servidor no impone un límite en el tamaño de los archivos que los usuarios pueden subir en juice-shop-paso4/server.ts,CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:H/E:U,2.3,Low,https://db.fluidattacks.com/wek/029,SAST,728,"
+  718 |     console.error(err)
+  719 |   })
+  720 | }
+  721 |
+  722 | const uploadToMemory = multer({ storage: multer.memoryStorage(), limits: { fileSize: 200000 } })
+  723 | const mimeTypeMap: any = {
+  724 |   'image/png': 'png',
+  725 |   'image/jpeg': 'jpg',
+  726 |   'image/jpg': 'jpg'
+  727 | }
+> 728 | const uploadToDisk = multer({
+  729 |   storage: multer.diskStorage({
+  730 |     destination: (req: Request, file: any, cb: any) => {
+  731 |       const isValid = mimeTypeMap[file.mimetype]
+  732 |       let error: Error | null = new Error('Invalid mime type')
+  733 |       if (isValid) {
+  734 |         error = null
+  735 |       }
+  736 |       cb(error, path.resolve('frontend/dist/frontend/assets/public/images/uploads/'))
+  737 |     },
+  738 |     filename: (req: Request, file: any, cb: any) => {
+      ^ Col 0
+",typescript.multer.f029.missing_file_size_limit
+400. Traceability Loss - AWS,CWE-778,Falta la propiedad Logging para hacer trazabilidad en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/SC:N/SI:N/SA:N/VA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/400,SAST,121,"
+> 121 | resource ""aws_lb"" ""juice_shop"" {
+  122 |   name               = ""${var.project_name}-alb""
+  123 |   internal           = false
+  124 |   load_balancer_type = ""application""
+  125 |   security_groups    = [aws_security_group.alb.id]
+  126 |   subnets            = aws_subnet.public[*].id
+  127 |
+  128 |   tags = {
+  129 |     Project     = var.project_name
+  130 |     Environment = var.environment
+  131 |   }
+  132 | }
+      ^ Col 0
+",terraform.aws_elb.f400.elb_access_logging_disabled
+400. Traceability Loss - AWS,CWE-778,Falta la propiedad Logging para hacer trazabilidad en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/SC:N/SI:N/SA:N/VA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/400,SAST,121,"
+> 121 | resource ""aws_lb"" ""juice_shop"" {
+  122 |   name               = ""${var.project_name}-alb""
+  123 |   internal           = false
+  124 |   load_balancer_type = ""application""
+  125 |   security_groups    = [aws_security_group.alb.id]
+  126 |   subnets            = aws_subnet.public[*].id
+  127 |
+  128 |   tags = {
+  129 |     Project     = var.project_name
+  130 |     Environment = var.environment
+  131 |   }
+  132 | }
+      ^ Col 0
+",terraform.aws_elb.f400.elb_access_logging_disabled
+400. Traceability Loss - AWS,CWE-778,Falta la propiedad Logging para hacer trazabilidad en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/SC:N/SI:N/SA:N/VA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/400,SAST,121,"
+> 121 | resource ""aws_lb"" ""juice_shop"" {
+  122 |   name               = ""${var.project_name}-alb""
+  123 |   internal           = false
+  124 |   load_balancer_type = ""application""
+  125 |   security_groups    = [aws_security_group.alb.id]
+  126 |   subnets            = aws_subnet.public[*].id
+  127 |
+  128 |   tags = {
+  129 |     Project     = var.project_name
+  130 |     Environment = var.environment
+  131 |   }
+  132 | }
+      ^ Col 0
+",terraform.aws_elb.f400.elb_access_logging_disabled
+400. Traceability Loss - AWS,CWE-778,Falta la propiedad Logging para hacer trazabilidad en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/SC:N/SI:N/SA:N/VA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/400,SAST,122,"
+> 122 | resource ""aws_lb"" ""juice_shop"" {
+  123 |   name               = ""${var.project_name}-alb""
+  124 |   internal           = false
+  125 |   load_balancer_type = ""application""
+  126 |   security_groups    = [aws_security_group.alb.id]
+  127 |   subnets            = aws_subnet.public[*].id
+  128 |
+  129 |   tags = {
+  130 |     Project     = var.project_name
+  131 |     Environment = var.environment
+  132 |   }
+  133 | }
+      ^ Col 0
+",terraform.aws_elb.f400.elb_access_logging_disabled
+400. Traceability Loss - AWS,CWE-778,Falta la propiedad Logging para hacer trazabilidad en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/SC:N/SI:N/SA:N/VA:N/E:U,1.7,Low,https://db.fluidattacks.com/wek/400,SAST,122,"
+> 122 | resource ""aws_lb"" ""juice_shop"" {
+  123 |   name               = ""${var.project_name}-alb""
+  124 |   internal           = false
+  125 |   load_balancer_type = ""application""
+  126 |   security_groups    = [aws_security_group.alb.id]
+  127 |   subnets            = aws_subnet.public[*].id
+  128 |
+  129 |   tags = {
+  130 |     Project     = var.project_name
+  131 |     Environment = var.environment
+  132 |   }
+  133 | }
+      ^ Col 0
+",terraform.aws_elb.f400.elb_access_logging_disabled
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/about/about.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,121,"
+  114 |       .subscribe((feedbacks) => {
+  115 |         for (let i = 0; i < feedbacks.length; i++) {
+  116 |
+  117 |           feedbacks[i].comment = `<figcaption><p class=""feedback-comment"">${
+  118 |             feedbacks[i].comment
+  119 |           }</p><div class=""feedback-stars"">(${this.stars[feedbacks[i].rating]})</div></figcaption>`
+  120 |           feedbacks[i].comment = this.sanitizer.bypassSecurityTrustHtml(
+> 121 |             feedbacks[i].comment
+  122 |           )
+  123 |
+  124 |           this.galleryRef.addImage({
+  125 |             src: this.images[i % this.images.length],
+  126 |             args: feedbacks[i].comment
+  127 |           })
+  128 |         }
+  129 |       })
+      ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/administration/administration.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,92,"
+   87 |   findAllFeedbacks () {
+   88 |     this.feedbackService.find().subscribe({
+   89 |       next: (feedbacks) => {
+   90 |         this.feedbackDataSource = feedbacks
+   91 |         for (const feedback of this.feedbackDataSource) {
+>  92 |           feedback.comment = this.sanitizer.bypassSecurityTrustHtml(feedback.comment)
+   93 |         }
+   94 |         this.feedbackDataSource = new MatTableDataSource(this.feedbackDataSource)
+   95 |         this.feedbackDataSource.paginator = this.paginatorFeedb
+   96 |         this.resultsLengthFeedback = feedbacks.length
+   97 |       },
+   98 |       error: (err) => {
+   99 |         this.error = err
+  100 |         console.log(this.error)
+  101 |       }
+  102 |     })
+  103 |   }
+      ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/administration/administration.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,74,"
+  70 |       next: (users) => {
+  71 |         this.userDataSource = users
+  72 |         this.userDataSourceHidden = users
+  73 |         for (const user of this.userDataSource) {
+> 74 |           user.email = this.sanitizer.bypassSecurityTrustHtml(`<span class=""${this.doesUserHaveAnActiveSession(user) ? 'confirmation' : 'error'}"">${user.email}</span>`)
+  75 |         }
+  76 |         this.userDataSource = new MatTableDataSource(this.userDataSource)
+  77 |         this.userDataSource.paginator = this.paginatorUsers
+  78 |         this.resultsLengthUser = users.length
+  79 |       },
+     ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/last-login-ip/last-login-ip.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,40,"
+  33 |   parseAuthToken () {
+  34 |     let payload = {} as any
+  35 |     const token = localStorage.getItem('token')
+  36 |     if (token) {
+  37 |       payload = jwtDecode(token)
+  38 |       if (payload.data.lastLoginIp) {
+  39 |
+> 40 |         this.lastLoginIp = this.sanitizer.bypassSecurityTrustHtml(`<small>${payload.data.lastLoginIp}</small>`)
+  41 |       }
+  42 |     }
+  43 |   }
+     ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/score-board/score-board.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,83,"
+  74 |       const transformedChallenges = challenges.map((challenge) => {
+  75 |         return {
+  76 |           ...challenge,
+  77 |           hintText: hints.filter((hint) => hint.ChallengeId === challenge.id && hint.unlocked).map((hint) => hint.order + '. ' + hint.text).join('\n\n'),
+  78 |           nextHint: hints.filter((hint) => hint.ChallengeId === challenge.id && !hint.unlocked).sort((a, b) => a.order - b.order).map((hint) => hint.id)[0],
+  79 |           hintsUnlocked: hints.filter((hint) => hint.ChallengeId === challenge.id && hint.unlocked).length,
+  80 |           hintsAvailable: hints.filter((hint) => hint.ChallengeId === challenge.id).length,
+  81 |           tagList: challenge.tags ? challenge.tags.split(',').map((tag) => tag.trim()) : [],
+  82 |           originalDescription: challenge.description as string,
+> 83 |           description: this.sanitizer.bypassSecurityTrustHtml(challenge.description as string)
+  84 |         }
+  85 |       })
+     ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/search-result/search-result.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,146,"
+  138 |   filterTable () {
+  139 |     let queryParam: string = this.route.snapshot.queryParams.q
+  140 |     if (queryParam) {
+  141 |       queryParam = queryParam.trim()
+  142 |       this.ngZone.runOutsideAngular(() => { // vuln-code-snippet hide-start
+  143 |         this.io.socket().emit('verifyLocalXssChallenge', queryParam)
+  144 |       }) // vuln-code-snippet hide-end
+  145 |       this.dataSource.filter = queryParam.toLowerCase()
+> 146 |       this.searchValue = this.sanitizer.bypassSecurityTrustHtml(queryParam) // vuln-code-snippet vuln-line localXssChallenge xssBonusChallenge
+  147 |       if (this.gridDataSourceSubscription) {
+  148 |         this.gridDataSourceSubscription.unsubscribe()
+  149 |       }
+  150 |       this.gridDataSourceSubscription = this.gridDataSource.subscribe((result: ProductTableEntry[]) => {
+  151 |         if (result.length === 0) {
+  152 |           this.emptyState = true
+  153 |         } else {
+  154 |           this.emptyState = false
+  155 |         }
+  156 |       })
+  157 |     } else {
+  158 |       this.dataSource.filter = ''
+  159 |       this.searchValue = undefined
+  160 |       this.emptyState = false
+  161 |     }
+  162 |   }
+      ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/search-result/search-result.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,113,"
+  111 |   trustProductDescription (tableData: any[]) { // vuln-code-snippet neutral-line restfulXssChallenge
+  112 |     for (let i = 0; i < tableData.length; i++) { // vuln-code-snippet neutral-line restfulXssChallenge
+> 113 |       tableData[i].description = this.sanitizer.bypassSecurityTrustHtml(tableData[i].description) // vuln-code-snippet vuln-line restfulXssChallenge
+  114 |     } // vuln-code-snippet neutral-line restfulXssChallenge
+  115 |   } // vuln-code-snippet neutral-line restfulXssChallenge
+      ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+371. DOM-Based cross-site scripting (XSS),CWE-79,Se hace uso de bypassSecurityTrust en la configuración del sanitizer de Angular en juice-shop-paso4/frontend/src/app/track-result/track-result.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/371,SAST,49,"
+  47 |     this.trackOrderService.find(this.orderId).subscribe((results) => {
+  48 |
+> 49 |       this.results.orderNo = this.sanitizer.bypassSecurityTrustHtml(`<code>${results.data[0].orderId}</code>`)
+  50 |       this.results.email = results.data[0].email
+  51 |       this.results.totalPrice = results.data[0].totalPrice
+  52 |       this.results.products = results.data[0].products
+  53 |       this.results.eta = results.data[0].eta !== undefined ? results.data[0].eta : '?'
+  54 |       this.results.bonus = results.data[0].bonus
+  55 |       this.dataSource.data = this.results.products
+  56 |       if (results.data[0].delivered) {
+  57 |         this.status = Status.Delivered
+  58 |       } else if (this.route.snapshot.data.type) {
+  59 |         this.status = Status.New
+  60 |       } else if (this.results.eta > 2) {
+  61 |         this.status = Status.Packing
+  62 |       } else {
+  63 |         this.status = Status.Transit
+  64 |       }
+  65 |     })
+     ^ Col 0
+",typescript.angular.f371.use_of_bypass_security_trust
+359. Sensitive information in source code - Credentials,CWE-798,El secreto utilizado para firmar los JWT está expuesto en texto plano en el código fuente de la aplicación en juice-shop-paso4/lib/insecurity.ts,CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/359,SAST,189,"
+  186 | export const updateAuthenticatedUsers = () => (req: Request, res: Response, next: NextFunction) => {
+  187 |   const token = req.cookies.token || utils.jwtFrom(req)
+  188 |   if (token && authenticatedUsers.get(token) === undefined) {
+> 189 |     jwt.verify(token, publicKey, (err: Error | null, decoded: any) => {
+  190 |       if (err === null && decoded?.data !== undefined) {
+  191 |         authenticatedUsers.put(token, decoded)
+  192 |         res.cookie('token', token)
+  193 |       }
+  194 |     })
+  195 |   }
+  196 |   next()
+  197 | }
+      ^ Col 0
+",typescript.general.f359.hardcoded_jwt_secret
+359. Sensitive information in source code - Credentials,CWE-798,El secreto utilizado para firmar los JWT está expuesto en texto plano en el código fuente de la aplicación en juice-shop-paso4/test/api/2fa.test.ts,CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/359,SAST,80,"
+   35 | void describe('/rest/2fa/verify', () => {
+   36 |   void it('POST should return a valid authentication when a valid tmp token is passed', async () => {
+   37 |     const tmpTokenWurstbrot = security.authorize({
+   38 |       userId: 10,
+   39 |       type: 'password_valid_needs_second_factor_token'
+   40 |     })
+   41 |
+   42 |     const totpToken = generateSync({ secret: 'IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH' })
+   43 |
+   44 |     const res = await request(app)
+   45 |       .post('/rest/2fa/verify')
+   46 |       .set(jsonHeader)
+   47 |       .send({
+   48 |         tmpToken: tmpTokenWurstbrot,
+   49 |         totpToken
+   50 |       })
+   51 |
+   52 |     assert.equal(res.status, 200)
+   53 |     assert.ok(res.headers['content-type']?.includes('application/json'))
+   54 |     assert.equal(typeof res.body.authentication.token, 'string')
+   55 |     assert.equal(typeof res.body.authentication.umail, 'string')
+   56 |     assert.equal(typeof res.body.authentication.bid, 'number')
+   57 |     assert.equal(res.body.authentication.umail, `wurstbrot@${config.get<string>('application.domain')}`)
+   58 |   })
+   59 |
+   60 |   void it('POST should fail if a invalid totp token is used', async () => {
+   61 |     const tmpTokenWurstbrot = security.authorize({
+   62 |       userId: 10,
+   63 |       type: 'password_valid_needs_second_factor_token'
+   64 |     })
+   65 |
+   66 |     const totpToken = generateSync({ secret: 'BI6KJAURX3LL5VQI2ZBFVLUWSBYBDX4H' })
+   67 |
+   68 |     const res = await request(app)
+   69 |       .post('/rest/2fa/verify')
+   70 |       .set(jsonHeader)
+   71 |       .send({
+   72 |         tmpToken: tmpTokenWurstbrot,
+   73 |         totpToken
+   74 |       })
+   75 |
+   76 |     assert.equal(res.status, 401)
+   77 |   })
+   78 |
+   79 |   void it('POST should fail if a unsigned tmp token is used', async () => {
+>  80 |     const tmpTokenWurstbrot = jwt.sign({
+   81 |       userId: 10,
+   82 |       type: 'password_valid_needs_second_factor_token'
+   83 |     }, 'this_surly_isnt_the_right_key')
+   84 |
+   85 |     const totpToken = generateSync({ secret: 'IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH' })
+   86 |
+   87 |     const res = await request(app)
+   88 |       .post('/rest/2fa/verify')
+   89 |       .set(jsonHeader)
+   90 |       .send({
+   91 |         tmpToken: tmpTokenWurstbrot,
+   92 |         totpToken
+   93 |       })
+   94 |
+   95 |     assert.equal(res.status, 401)
+   96 |   })
+   97 |
+   98 |   void it('POST should fail if the token type is invalid', async () => {
+   99 |     const tmpTokenWurstbrot = security.authorize({
+  100 |       userId: 10,
+  101 |       type: 'invalid_token_type'
+  102 |     })
+  103 |
+  104 |     const totpToken = generateSync({ secret: 'IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH' })
+  105 |
+  106 |     const res = await request(app)
+  107 |       .post('/rest/2fa/verify')
+  108 |       .set(jsonHeader)
+  109 |       .send({
+  110 |         tmpToken: tmpTokenWurstbrot,
+  111 |         totpToken
+  112 |       })
+  113 |
+  114 |     assert.equal(res.status, 401)
+  115 |   })
+  116 |
+  117 |   void it('POST should fail if the user doesn\'t exist', async () => {
+  118 |     const tmpTokenWurstbrot = security.authorize({
+  119 |       userId: 999,
+  120 |       type: 'password_valid_needs_second_factor_token'
+  121 |     })
+  122 |
+  123 |     const totpToken = generateSync({ secret: 'IFTXE3SPOEYVURT2MRYGI52TKJ4HC3KH' })
+  124 |
+  125 |     const res = await request(app)
+  126 |       .post('/rest/2fa/verify')
+  127 |       .set(jsonHeader)
+  128 |       .send({
+  129 |         tmpToken: tmpTokenWurstbrot,
+  130 |         totpToken
+  131 |       })
+  132 |
+  133 |     assert.equal(res.status, 401)
+  134 |   })
+  135 | })
+      ^ Col 0
+",typescript.general.f359.hardcoded_jwt_secret
+020. Non-encrypted confidential information,CWE-798,La llave utilizada como parámetro en crypto.createHmac se almacena en texto plano en juice-shop-paso4/lib/insecurity.ts,CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,1.3,Low,https://db.fluidattacks.com/wek/020,SAST,42,"
+> 42 | export const hmac = (data: string) => crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj').update(data).digest('hex')
+     ^ Col 0
+",typescript.crypto.f020.hardcoded_hmac_key
+117. Unverifiable files,CWE-912,Se detectó un archivo no verificable en juice-shop-paso4/ftp/encrypt.pyc,CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/117,SAST,0,"
+   1 | �
+   2 | ""��^c@sxedd�ZdZdZedd�Zx=ej�D]/Zejee e
+   3 | e�ee��d�q7Wej
+   4 | �dS(sannouncement.mdtrlEU
+   5 | � �oCK
+   6 | 'Pn�x'�g�*nt�Nnk/'t�(��Bp)�mmb�z&'}�h�$R[�5�h��(�T����f�4�<
+   7 | %��e�|\z0�?g-.M�F�o�x�=v- �P�1A�;�n�.�IqU,OO9~
+   8 | isannouncement_encrypted.mdtws
+   9 | N(
+  10 | topentconfidential_documenttNtetencrypted_documenttreadtchartwritetstrtpowtordtclose(((s
+  11 | encrypt.pyt<module>s
+  12 | -
+     ^ Col 0
+",executable_files.general.f117.unverifiable_files_detected
+117. Unverifiable files,CWE-912,Se detectó un archivo no verificable en juice-shop-paso4/test/files/invalidTypeForClient.exe,CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U,0.6,Low,https://db.fluidattacks.com/wek/117,SAST,0,"
+  1 | 
+    ^ Col 0
+",executable_files.general.f117.unverifiable_files_detected
+085. Sensitive data stored in client-side storage,CWE-922,Se está almacenando información sensible en el lado del cliente en juice-shop-paso4/frontend/src/app/login/login.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/085,SAST,127,"
+   95 |     return submit(this.loginForm, async () => {
+   96 |       const user = {
+   97 |         email: this.loginModel().email,
+   98 |         password: this.loginModel().password
+   99 |       }
+  100 |
+  101 |       if (this.loginModel().rememberMe) {
+  102 |         localStorage.setItem('email', user.email)
+  103 |       } else {
+  104 |         localStorage.removeItem('email')
+  105 |       }
+  106 |
+  107 |       try {
+  108 |         const authentication: any = await firstValueFrom(this.userService.login(user))
+  109 |         const redirectUrl = this.route.snapshot.queryParamMap.get('redirectUrl') ?? '/search'
+  110 |         localStorage.setItem('token', authentication.token)
+  111 |         const expires = new Date()
+  112 |         expires.setHours(expires.getHours() + 8)
+  113 |         this.cookieService.put('token', authentication.token, { expires })
+  114 |         sessionStorage.setItem('bid', authentication.bid)
+  115 |
+  116 |         await firstValueFrom(this.basketService.mergeGuestBasketIntoUserBasket(authentication.bid)
+  117 |           .pipe(
+  118 |             catchError((err) => {
+  119 |               console.log(err)
+  120 |               return of(void 0)
+  121 |             })
+  122 |           ))
+  123 |         await this.completeLogin(redirectUrl)
+  124 |       } catch (err: any) {
+  125 |         const error = err?.error
+  126 |         if (error?.status && error?.data && error.status === 'totp_token_required') {
+> 127 |           localStorage.setItem('totp_tmp_token', error.data.tmpToken)
+  128 |           await this.router.navigate(['/2fa/enter'])
+  129 |           return
+  130 |         }
+  131 |         localStorage.removeItem('token')
+  132 |         this.cookieService.remove('token')
+  133 |         sessionStorage.removeItem('bid')
+  134 |         this.error.set(error)
+  135 |         this.userService.isLoggedIn.next(false)
+  136 |         this.loginForm.email().reset()
+  137 |         this.loginForm.password().reset()
+  138 |       }
+  139 |     })
+      ^ Col 0
+",typescript.general.f085.client_storage_exposure
+085. Sensitive data stored in client-side storage,CWE-922,Se está almacenando información sensible en el lado del cliente en juice-shop-paso4/frontend/src/app/login/login.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/085,SAST,110,"
+   95 |     return submit(this.loginForm, async () => {
+   96 |       const user = {
+   97 |         email: this.loginModel().email,
+   98 |         password: this.loginModel().password
+   99 |       }
+  100 |
+  101 |       if (this.loginModel().rememberMe) {
+  102 |         localStorage.setItem('email', user.email)
+  103 |       } else {
+  104 |         localStorage.removeItem('email')
+  105 |       }
+  106 |
+  107 |       try {
+  108 |         const authentication: any = await firstValueFrom(this.userService.login(user))
+  109 |         const redirectUrl = this.route.snapshot.queryParamMap.get('redirectUrl') ?? '/search'
+> 110 |         localStorage.setItem('token', authentication.token)
+  111 |         const expires = new Date()
+  112 |         expires.setHours(expires.getHours() + 8)
+  113 |         this.cookieService.put('token', authentication.token, { expires })
+  114 |         sessionStorage.setItem('bid', authentication.bid)
+  115 |
+  116 |         await firstValueFrom(this.basketService.mergeGuestBasketIntoUserBasket(authentication.bid)
+  117 |           .pipe(
+  118 |             catchError((err) => {
+  119 |               console.log(err)
+  120 |               return of(void 0)
+  121 |             })
+  122 |           ))
+  123 |         await this.completeLogin(redirectUrl)
+  124 |       } catch (err: any) {
+  125 |         const error = err?.error
+  126 |         if (error?.status && error?.data && error.status === 'totp_token_required') {
+  127 |           localStorage.setItem('totp_tmp_token', error.data.tmpToken)
+  128 |           await this.router.navigate(['/2fa/enter'])
+  129 |           return
+  130 |         }
+  131 |         localStorage.removeItem('token')
+  132 |         this.cookieService.remove('token')
+  133 |         sessionStorage.removeItem('bid')
+  134 |         this.error.set(error)
+  135 |         this.userService.isLoggedIn.next(false)
+  136 |         this.loginForm.email().reset()
+  137 |         this.loginForm.password().reset()
+  138 |       }
+  139 |     })
+      ^ Col 0
+",typescript.general.f085.client_storage_exposure
+085. Sensitive data stored in client-side storage,CWE-922,Se está almacenando información sensible en el lado del cliente en juice-shop-paso4/frontend/src/app/oauth/oauth.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/085,SAST,52,"
+  46 |   login (profile: any) {
+  47 |     this.userService.login({ email: profile.email, password: btoa(profile.email.split('').reverse().join('')), oauth: true }).subscribe({
+  48 |       next: (authentication) => {
+  49 |         const expires = new Date()
+  50 |         expires.setHours(expires.getHours() + 8)
+  51 |         this.cookieService.put('token', authentication.token, { expires })
+> 52 |         localStorage.setItem('token', authentication.token)
+  53 |         sessionStorage.setItem('bid', authentication.bid)
+  54 |         this.userService.isLoggedIn.next(true)
+  55 |         this.ngZone.run(async () => await this.router.navigate(['/']))
+  56 |       },
+  57 |       error: (error) => {
+  58 |         this.invalidateSession(error)
+  59 |         this.ngZone.run(async () => await this.router.navigate(['/login']))
+  60 |       }
+  61 |     })
+  62 |   }
+     ^ Col 0
+",typescript.general.f085.client_storage_exposure
+085. Sensitive data stored in client-side storage,CWE-922,Se está almacenando información sensible en el lado del cliente en juice-shop-paso4/frontend/src/app/two-factor-auth-enter/two-factor-auth-enter.component.ts,CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/085,SAST,54,"
+  53 |       next: (authentication) => {
+> 54 |         localStorage.setItem('token', authentication.token)
+  55 |         const expires = new Date()
+  56 |         expires.setHours(expires.getHours() + 8)
+  57 |         this.cookieService.put('token', authentication.token, { expires })
+  58 |         sessionStorage.setItem('bid', authentication.bid?.toString())
+  59 |         /* Use userService to notifiy if user has logged in */
+  60 |         /* this.userService.isLoggedIn = true; */
+  61 |         this.userService.isLoggedIn.next(true)
+  62 |         this.ngZone.run(async () => await this.router.navigate(['/search']))
+  63 |       },
+     ^ Col 0
+",typescript.general.f085.client_storage_exposure
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,110,"
+   95 | resource ""aws_security_group"" ""ecs"" {
+   96 |   name        = ""${var.project_name}-ecs-sg""
+   97 |   description = ""Security group for ECS tasks""
+   98 |   vpc_id      = aws_vpc.main.id
+   99 |
+  100 |   ingress {
+  101 |     from_port       = 3000
+  102 |     to_port         = 3000
+  103 |     protocol        = ""tcp""
+  104 |     security_groups = [aws_security_group.alb.id]
+  105 |   }
+  106 |
+  107 |   egress {
+  108 |     from_port   = 0
+  109 |     to_port     = 0
+> 110 |     protocol    = ""-1""
+  111 |     cidr_blocks = [""0.0.0.0/0""]
+  112 |   }
+  113 |
+  114 |   tags = {
+  115 |     Name        = ""${var.project_name}-ecs-sg""
+  116 |     Project     = var.project_name
+  117 |     Environment = var.environment
+  118 |   }
+  119 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,237,"
+  222 | resource ""aws_security_group"" ""efs"" {
+  223 |   name        = ""${var.project_name}-efs-sg""
+  224 |   description = ""Security group for EFS mount targets""
+  225 |   vpc_id      = aws_vpc.main.id
+  226 |
+  227 |   ingress {
+  228 |     from_port       = 2049
+  229 |     to_port         = 2049
+  230 |     protocol        = ""tcp""
+  231 |     security_groups = [aws_security_group.ecs.id]
+  232 |   }
+  233 |
+  234 |   egress {
+  235 |     from_port   = 0
+  236 |     to_port     = 0
+> 237 |     protocol    = ""-1""
+  238 |     cidr_blocks = [""0.0.0.0/0""]
+  239 |   }
+  240 |
+  241 |   tags = {
+  242 |     Name        = ""${var.project_name}-efs-sg""
+  243 |     Project     = var.project_name
+  244 |     Environment = var.environment
+  245 |   }
+  246 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_1.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,84,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+  70 |     protocol    = ""tcp""
+  71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+> 84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,110,"
+   95 | resource ""aws_security_group"" ""ecs"" {
+   96 |   name        = ""${var.project_name}-ecs-sg""
+   97 |   description = ""Security group for ECS tasks""
+   98 |   vpc_id      = aws_vpc.main.id
+   99 |
+  100 |   ingress {
+  101 |     from_port       = 3000
+  102 |     to_port         = 3000
+  103 |     protocol        = ""tcp""
+  104 |     security_groups = [aws_security_group.alb.id]
+  105 |   }
+  106 |
+  107 |   egress {
+  108 |     from_port   = 0
+  109 |     to_port     = 0
+> 110 |     protocol    = ""-1""
+  111 |     cidr_blocks = [""0.0.0.0/0""]
+  112 |   }
+  113 |
+  114 |   tags = {
+  115 |     Name        = ""${var.project_name}-ecs-sg""
+  116 |     Project     = var.project_name
+  117 |     Environment = var.environment
+  118 |   }
+  119 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,237,"
+  222 | resource ""aws_security_group"" ""efs"" {
+  223 |   name        = ""${var.project_name}-efs-sg""
+  224 |   description = ""Security group for EFS mount targets""
+  225 |   vpc_id      = aws_vpc.main.id
+  226 |
+  227 |   ingress {
+  228 |     from_port       = 2049
+  229 |     to_port         = 2049
+  230 |     protocol        = ""tcp""
+  231 |     security_groups = [aws_security_group.ecs.id]
+  232 |   }
+  233 |
+  234 |   egress {
+  235 |     from_port   = 0
+  236 |     to_port     = 0
+> 237 |     protocol    = ""-1""
+  238 |     cidr_blocks = [""0.0.0.0/0""]
+  239 |   }
+  240 |
+  241 |   tags = {
+  242 |     Name        = ""${var.project_name}-efs-sg""
+  243 |     Project     = var.project_name
+  244 |     Environment = var.environment
+  245 |   }
+  246 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_2.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,84,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+  70 |     protocol    = ""tcp""
+  71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+> 84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,110,"
+   95 | resource ""aws_security_group"" ""ecs"" {
+   96 |   name        = ""${var.project_name}-ecs-sg""
+   97 |   description = ""Security group for ECS tasks""
+   98 |   vpc_id      = aws_vpc.main.id
+   99 |
+  100 |   ingress {
+  101 |     from_port       = 3000
+  102 |     to_port         = 3000
+  103 |     protocol        = ""tcp""
+  104 |     security_groups = [aws_security_group.alb.id]
+  105 |   }
+  106 |
+  107 |   egress {
+  108 |     from_port   = 0
+  109 |     to_port     = 0
+> 110 |     protocol    = ""-1""
+  111 |     cidr_blocks = [""0.0.0.0/0""]
+  112 |   }
+  113 |
+  114 |   tags = {
+  115 |     Name        = ""${var.project_name}-ecs-sg""
+  116 |     Project     = var.project_name
+  117 |     Environment = var.environment
+  118 |   }
+  119 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,237,"
+  222 | resource ""aws_security_group"" ""efs"" {
+  223 |   name        = ""${var.project_name}-efs-sg""
+  224 |   description = ""Security group for EFS mount targets""
+  225 |   vpc_id      = aws_vpc.main.id
+  226 |
+  227 |   ingress {
+  228 |     from_port       = 2049
+  229 |     to_port         = 2049
+  230 |     protocol        = ""tcp""
+  231 |     security_groups = [aws_security_group.ecs.id]
+  232 |   }
+  233 |
+  234 |   egress {
+  235 |     from_port   = 0
+  236 |     to_port     = 0
+> 237 |     protocol    = ""-1""
+  238 |     cidr_blocks = [""0.0.0.0/0""]
+  239 |   }
+  240 |
+  241 |   tags = {
+  242 |     Name        = ""${var.project_name}-efs-sg""
+  243 |     Project     = var.project_name
+  244 |     Environment = var.environment
+  245 |   }
+  246 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/data/static/codefixes/iacLeakedKeyChallenge_3_correct.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,84,"
+  62 | resource ""aws_security_group"" ""alb"" {
+  63 |   name        = ""${var.project_name}-alb-sg""
+  64 |   description = ""Security group for ALB""
+  65 |   vpc_id      = aws_vpc.main.id
+  66 |
+  67 |   ingress {
+  68 |     from_port   = 80
+  69 |     to_port     = 80
+  70 |     protocol    = ""tcp""
+  71 |     cidr_blocks = [""0.0.0.0/0""]
+  72 |   }
+  73 |
+  74 |   ingress {
+  75 |     from_port   = 443
+  76 |     to_port     = 443
+  77 |     protocol    = ""tcp""
+  78 |     cidr_blocks = [""0.0.0.0/0""]
+  79 |   }
+  80 |
+  81 |   egress {
+  82 |     from_port   = 0
+  83 |     to_port     = 0
+> 84 |     protocol    = ""-1""
+  85 |     cidr_blocks = [""0.0.0.0/0""]
+  86 |   }
+  87 |
+  88 |   tags = {
+  89 |     Name        = ""${var.project_name}-alb-sg""
+  90 |     Project     = var.project_name
+  91 |     Environment = var.environment
+  92 |   }
+  93 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,111,"
+   96 | resource ""aws_security_group"" ""ecs"" {
+   97 |   name        = ""${var.project_name}-ecs-sg""
+   98 |   description = ""Security group for ECS tasks""
+   99 |   vpc_id      = aws_vpc.main.id
+  100 |
+  101 |   ingress {
+  102 |     from_port       = 3000
+  103 |     to_port         = 3000
+  104 |     protocol        = ""tcp""
+  105 |     security_groups = [aws_security_group.alb.id]
+  106 |   }
+  107 |
+  108 |   egress {
+  109 |     from_port   = 0
+  110 |     to_port     = 0
+> 111 |     protocol    = ""-1""
+  112 |     cidr_blocks = [""0.0.0.0/0""]
+  113 |   }
+  114 |
+  115 |   tags = {
+  116 |     Name        = ""${var.project_name}-ecs-sg""
+  117 |     Project     = var.project_name
+  118 |     Environment = var.environment
+  119 |   }
+  120 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,238,"
+  223 | resource ""aws_security_group"" ""efs"" {
+  224 |   name        = ""${var.project_name}-efs-sg""
+  225 |   description = ""Security group for EFS mount targets""
+  226 |   vpc_id      = aws_vpc.main.id
+  227 |
+  228 |   ingress {
+  229 |     from_port       = 2049
+  230 |     to_port         = 2049
+  231 |     protocol        = ""tcp""
+  232 |     security_groups = [aws_security_group.ecs.id]
+  233 |   }
+  234 |
+  235 |   egress {
+  236 |     from_port   = 0
+  237 |     to_port     = 0
+> 238 |     protocol    = ""-1""
+  239 |     cidr_blocks = [""0.0.0.0/0""]
+  240 |   }
+  241 |
+  242 |   tags = {
+  243 |     Name        = ""${var.project_name}-efs-sg""
+  244 |     Project     = var.project_name
+  245 |     Environment = var.environment
+  246 |   }
+  247 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/infrastructure/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,85,"
+  63 | resource ""aws_security_group"" ""alb"" {
+  64 |   name        = ""${var.project_name}-alb-sg""
+  65 |   description = ""Security group for ALB""
+  66 |   vpc_id      = aws_vpc.main.id
+  67 |
+  68 |   ingress {
+  69 |     from_port   = 80
+  70 |     to_port     = 80
+  71 |     protocol    = ""tcp""
+  72 |     cidr_blocks = [""0.0.0.0/0""]
+  73 |   }
+  74 |
+  75 |   ingress {
+  76 |     from_port   = 443
+  77 |     to_port     = 443
+  78 |     protocol    = ""tcp""
+  79 |     cidr_blocks = [""0.0.0.0/0""]
+  80 |   }
+  81 |
+  82 |   egress {
+  83 |     from_port   = 0
+  84 |     to_port     = 0
+> 85 |     protocol    = ""-1""
+  86 |     cidr_blocks = [""0.0.0.0/0""]
+  87 |   }
+  88 |
+  89 |   tags = {
+  90 |     Name        = ""${var.project_name}-alb-sg""
+  91 |     Project     = var.project_name
+  92 |     Environment = var.environment
+  93 |   }
+  94 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,111,"
+   96 | resource ""aws_security_group"" ""ecs"" {
+   97 |   name        = ""${var.project_name}-ecs-sg""
+   98 |   description = ""Security group for ECS tasks""
+   99 |   vpc_id      = aws_vpc.main.id
+  100 |
+  101 |   ingress {
+  102 |     from_port       = 3000
+  103 |     to_port         = 3000
+  104 |     protocol        = ""tcp""
+  105 |     security_groups = [aws_security_group.alb.id]
+  106 |   }
+  107 |
+  108 |   egress {
+  109 |     from_port   = 0
+  110 |     to_port     = 0
+> 111 |     protocol    = ""-1""
+  112 |     cidr_blocks = [""0.0.0.0/0""]
+  113 |   }
+  114 |
+  115 |   tags = {
+  116 |     Name        = ""${var.project_name}-ecs-sg""
+  117 |     Project     = var.project_name
+  118 |     Environment = var.environment
+  119 |   }
+  120 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,238,"
+  223 | resource ""aws_security_group"" ""efs"" {
+  224 |   name        = ""${var.project_name}-efs-sg""
+  225 |   description = ""Security group for EFS mount targets""
+  226 |   vpc_id      = aws_vpc.main.id
+  227 |
+  228 |   ingress {
+  229 |     from_port       = 2049
+  230 |     to_port         = 2049
+  231 |     protocol        = ""tcp""
+  232 |     security_groups = [aws_security_group.ecs.id]
+  233 |   }
+  234 |
+  235 |   egress {
+  236 |     from_port   = 0
+  237 |     to_port     = 0
+> 238 |     protocol    = ""-1""
+  239 |     cidr_blocks = [""0.0.0.0/0""]
+  240 |   }
+  241 |
+  242 |   tags = {
+  243 |     Name        = ""${var.project_name}-efs-sg""
+  244 |     Project     = var.project_name
+  245 |     Environment = var.environment
+  246 |   }
+  247 | }
+      ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+024. Unrestricted access between network segments - AWS,CWE-923,Las reglas ingress/egress de los SecurityGroup permiten el uso de todos los protocolos IP en juice-shop-paso4/terraform/networking.tf,CVSS:4.0/AV:A/AC:H/PR:L/UI:N/AT:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,0.5,Low,https://db.fluidattacks.com/wek/024,SAST,85,"
+  63 | resource ""aws_security_group"" ""alb"" {
+  64 |   name        = ""${var.project_name}-alb-sg""
+  65 |   description = ""Security group for ALB""
+  66 |   vpc_id      = aws_vpc.main.id
+  67 |
+  68 |   ingress {
+  69 |     from_port   = 80
+  70 |     to_port     = 80
+  71 |     protocol    = ""tcp""
+  72 |     cidr_blocks = [""0.0.0.0/0""]
+  73 |   }
+  74 |
+  75 |   ingress {
+  76 |     from_port   = 443
+  77 |     to_port     = 443
+  78 |     protocol    = ""tcp""
+  79 |     cidr_blocks = [""0.0.0.0/0""]
+  80 |   }
+  81 |
+  82 |   egress {
+  83 |     from_port   = 0
+  84 |     to_port     = 0
+> 85 |     protocol    = ""-1""
+  86 |     cidr_blocks = [""0.0.0.0/0""]
+  87 |   }
+  88 |
+  89 |   tags = {
+  90 |     Name        = ""${var.project_name}-alb-sg""
+  91 |     Project     = var.project_name
+  92 |     Environment = var.environment
+  93 |   }
+  94 | }
+     ^ Col 0
+",terraform.aws_ec2.f024.unrestricted_ip_protocols
+106. NoSQL injection,CWE-943,Las sentencias NOSQL dinámicas se generan sin la validación de datos necesaria y sin utilizar sentencias parametrizadas en juice-shop-paso4/routes/updateProductReviews.ts,CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:U,2.7,Low,https://db.fluidattacks.com/wek/106,SAST,17,"
+  15 |   return (req: Request, res: Response, next: NextFunction) => {
+  16 |     const user = security.authenticatedUsers.from(req) // vuln-code-snippet vuln-line forgedReviewChallenge
+> 17 |     db.reviewsCollection.update( // vuln-code-snippet neutral-line forgedReviewChallenge
+  18 |       { _id: req.body.id }, // vuln-code-snippet vuln-line noSqlReviewsChallenge forgedReviewChallenge
+  19 |       { $set: { message: req.body.message } },
+  20 |       { multi: true } // vuln-code-snippet vuln-line noSqlReviewsChallenge
+  21 |     ).then(
+  22 |       (result: { modified: number, original: Array<{ author: any }> }) => {
+  23 |         challengeUtils.solveIf(challenges.noSqlReviewsChallenge, () => { return result.modified > 1 }) // vuln-code-snippet hide-line
+  24 |         challengeUtils.solveIf(challenges.forgedReviewChallenge, () => { return user?.data && result.original[0] && result.original[0].author !== user.data.email && result.modified === 1 }) // vuln-code-snippet hide-line
+  25 |         res.json(result)
+  26 |       }, (err: unknown) => {
+  27 |         res.status(500).json(err)
+  28 |       })
+  29 |   }
+     ^ Col 0
+",typescript.mongodb.f106.unsanitized_dollarwhere_query
+Summary: 107 vulnerabilities were found in your targets.

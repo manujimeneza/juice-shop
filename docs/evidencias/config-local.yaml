@@ -1,0 +1,25 @@
+#  PASO 1  Configuracion para la ejecucion LOCAL del CLI
+#
+#  working_dir apunta a /my-dir porque es el punto de montaje dentro del
+#  contenedor. Si ejecutas el binario nativo en vez de Docker, cambialo
+#  por la ruta real del repositorio clonado.
+
+namespace: juice-shop-local
+language: ES
+working_dir: /my-dir
+
+strict: false
+
+output:
+  file_path: /my-dir/fluid-local-resultados.csv
+  format: CSV
+
+sast:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - "*.min.js"
+    - build
+    - dist
+    - frontend/dist
