@@ -1,5 +1,13 @@
 name: Fluid Attacks - Paso 4 (umbral de severidad)
 
+# Con `strict: true` + `strictness_threshold: high` el escaner solo termina
+# con codigo 1 si hay hallazgos high o critical. La action convierte ese
+# codigo en `vulnerabilities_found=true` sin fallar el job, asi que el
+# quiebre del build se hace en un paso explicito que lee esa salida.
+#
+# Con `format: ALL` el escaner agrega la extension al `file_path`, de ahi
+# el comodin en las rutas de evidencia.
+
 on:
   push:
     branches: [paso4-umbral]
@@ -31,10 +39,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: paso4-sast
-          path: |
-            fluid-sast-umbral.csv
-            fluid-sast-umbral.sarif
+          path: fluid-sast-umbral*
           if-no-files-found: warn
+
+      - name: Romper el build si se supera el umbral (high)
+        if: steps.scan.outputs.vulnerabilities_found == 'true'
+        run: |
+          echo "::error::SAST encontro vulnerabilidades de severidad high o critical. Build rechazado."
+          exit 1
 
   sca:
     name: SCA (umbral high)
@@ -56,10 +68,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: paso4-sca
-          path: |
-            fluid-sca-umbral.csv
-            fluid-sca-umbral.sarif
+          path: fluid-sca-umbral*
           if-no-files-found: warn
+
+      - name: Romper el build si se supera el umbral (high)
+        if: steps.scan.outputs.vulnerabilities_found == 'true'
+        run: |
+          echo "::error::SCA encontro vulnerabilidades de severidad high o critical. Build rechazado."
+          exit 1
 
   secret-scan:
     name: Secret Scan (informativo, ver justificacion)
