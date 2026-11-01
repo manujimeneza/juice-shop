@@ -2,6 +2,14 @@ name: Fluid Attacks - Paso 3 (estricto)
 
 # NOTA: se espera que este workflow FALLE. Ese es el resultado correcto
 # sobre un repositorio deliberadamente vulnerable.
+#
+# La action de Fluid Attacks captura el codigo de salida 1 que produce
+# `strict: true` y lo convierte en la salida `vulnerabilities_found=true`
+# sin fallar el job. Por eso el quiebre del build se hace en un paso
+# explicito que lee esa salida.
+#
+# Con `format: ALL` el escaner agrega la extension al `file_path`
+# (fluid-sast-estricto.sarif.csv y .sarif.sarif), de ahi el comodin.
 
 on:
   push:
@@ -34,10 +42,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: paso3-sast
-          path: |
-            fluid-sast-estricto.csv
-            fluid-sast-estricto.sarif
+          path: fluid-sast-estricto*
           if-no-files-found: warn
+
+      - name: Romper el build (modo estricto)
+        if: steps.scan.outputs.vulnerabilities_found == 'true'
+        run: |
+          echo "::error::SAST en modo estricto encontro vulnerabilidades. Build rechazado."
+          exit 1
 
   sca:
     name: SCA (estricto)
@@ -59,10 +71,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: paso3-sca
-          path: |
-            fluid-sca-estricto.csv
-            fluid-sca-estricto.sarif
+          path: fluid-sca-estricto*
           if-no-files-found: warn
+
+      - name: Romper el build (modo estricto)
+        if: steps.scan.outputs.vulnerabilities_found == 'true'
+        run: |
+          echo "::error::SCA en modo estricto encontro vulnerabilidades. Build rechazado."
+          exit 1
 
   secret-scan:
     name: Secret Scan (estricto)
@@ -87,8 +103,16 @@ jobs:
           path: fluid-ss-estricto.csv
           if-no-files-found: warn
 
+      # El binario `ss` termina con codigo 0 aunque encuentre secretos, asi
+      # que ademas de la salida de la action se cuentan las filas del CSV.
       - name: Romper el build si se detectaron secretos
-        if: steps.scan.outputs.vulnerabilities_found == 'true'
         run: |
-          echo "::error::Secret Scan detecto credenciales embebidas. Build rechazado."
-          exit 1
+          filas=0
+          if [ -f fluid-ss-estricto.csv ]; then
+            filas=$(( $(wc -l < fluid-ss-estricto.csv) - 1 ))
+          fi
+          echo "Secretos reportados: ${filas}"
+          if [ "${{ steps.scan.outputs.vulnerabilities_found }}" = "true" ] || [ "${filas}" -gt 0 ]; then
+            echo "::error::Secret Scan detecto credenciales embebidas. Build rechazado."
+            exit 1
+          fi
