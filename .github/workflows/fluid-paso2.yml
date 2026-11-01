@@ -1,0 +1,93 @@
+name: Fluid Attacks - Paso 2 (informativo)
+
+on:
+  push:
+    branches: [paso2-informativo]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+
+  sast:
+    name: SAST (informativo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo SAST
+        id: scan
+        uses: fluidattacks/sast-action@main
+        with:
+          scan_config_path: .github/fluid/sast.yaml
+          scanner_mode: full
+
+      - name: Resultado del escaneo
+        if: always()
+        run: echo "vulnerabilities_found = ${{ steps.scan.outputs.vulnerabilities_found }}"
+
+      - name: Evidencia (SARIF)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso2-sast
+          path: fluid-sast-informativo.sarif
+          if-no-files-found: warn
+
+  sca:
+    name: SCA (informativo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo SCA
+        id: scan
+        uses: fluidattacks/sca-action@main
+        with:
+          scan_config_path: .github/fluid/sca.yaml
+          scanner_mode: full
+
+      - name: Resultado del escaneo
+        if: always()
+        run: echo "vulnerabilities_found = ${{ steps.scan.outputs.vulnerabilities_found }}"
+
+      - name: Evidencia (SARIF)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso2-sca
+          path: fluid-sca-informativo.sarif
+          if-no-files-found: warn
+
+  secret-scan:
+    name: Secret Scan (informativo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo de secretos
+        id: scan
+        uses: fluidattacks/ss-action@main
+        with:
+          scan_config_path: .github/fluid/ss.yaml
+          scanner_mode: full
+
+      - name: Resultado del escaneo
+        if: always()
+        run: echo "vulnerabilities_found = ${{ steps.scan.outputs.vulnerabilities_found }}"
+
+      - name: Evidencia (SARIF)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso2-ss
+          path: fluid-ss-informativo.sarif
+          if-no-files-found: warn

@@ -1,0 +1,17 @@
+#  PASO 2  Secret Scan en modo informativo
+#
+#  IMPORTANTE: la action de Secret Scan lee UNICAMENTE las claves `ss` y
+#  `output`. No acepta `strict`, `strictness_threshold`, `namespace` ni
+#  `language`. Ponerlas aqui no tiene efecto.
+
+ss:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - build
+    - dist
+
+output:
+  file_path: fluid-ss-informativo.sarif
+  format: SARIF

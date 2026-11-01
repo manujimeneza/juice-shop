@@ -1,0 +1,19 @@
+#  PASO 2  SCA en modo informativo
+#  No exporta CSV, no rompe el build. Solo reporta.
+namespace: juice-shop-paso2
+language: ES
+working_dir: .
+
+strict: false
+
+output:
+  file_path: fluid-sca-informativo.sarif
+  format: SARIF
+
+sca:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - build
+    - dist

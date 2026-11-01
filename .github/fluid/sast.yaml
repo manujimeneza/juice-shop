@@ -1,0 +1,22 @@
+#  PASO 2  SAST en modo informativo
+#  No exporta CSV, no rompe el build. Solo reporta.
+namespace: juice-shop-paso2
+language: ES
+working_dir: .
+
+# strict: false  ->  el escaner reporta hallazgos pero NO falla el pipeline.
+strict: false
+
+output:
+  file_path: fluid-sast-informativo.sarif
+  format: SARIF
+
+sast:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - "*.min.js"
+    - build
+    - dist
+    - frontend/dist
