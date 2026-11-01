@@ -1,34 +1,25 @@
-# Informe de ejecución — Fluid Attacks sobre OWASP Juice Shop
+# Informe semana 4: Fluid Attacks sobre Juice Shop
 
-**Curso:** 0453_2666 Desarrollo de Sistemas Seguros — Semana 4 (DevSecOps)
-**Autora:** Manuela Jiménez
-**Repositorio analizado:** fork de [juice-shop/juice-shop](https://github.com/juice-shop/juice-shop) → [manujimeneza/juice-shop](https://github.com/manujimeneza/juice-shop)
-**Herramientas:** Fluid Attacks SAST, SCA y Secret Scan (CLI en Docker y GitHub Actions)
+Desarrollo de Sistemas Seguros (0453_2666)
+Manuela Jiménez
 
----
+Para este trabajo usé OWASP Juice Shop. Hice un fork en mi cuenta ([manujimeneza/juice-shop](https://github.com/manujimeneza/juice-shop)) y sobre ese fork configuré los escáneres de Fluid Attacks (SAST, SCA y Secret Scan), primero en local con Docker y después en GitHub Actions.
 
-## Resumen de entregables
-
-| Paso | Qué pide | Rama | Commit (enlace para el informe) | Resultado del pipeline |
-|---|---|---|---|---|
-| 1 | CLI local | — | — | Escaneo local: SAST 109 hallazgos, SCA 50 |
-| 2 | 3 scanners, informativo, sin CSV, sin romper | `paso2-informativo` | [2e97565](https://github.com/manujimeneza/juice-shop/commit/2e97565ea0365690114641dd433bb72a7fa25973) | ✅ [verde](https://github.com/manujimeneza/juice-shop/actions/runs/41357862214) |
-| 3 | 3 scanners, CSV, romper el build (estricto) | `paso3-estricto` | [a6eb166](https://github.com/manujimeneza/juice-shop/commit/a6eb166f7aca74f9618b837f1f23c34e3fab5224) | ❌ [rojo en los 3 jobs](https://github.com/manujimeneza/juice-shop/actions/runs/41359285248) |
-| 4 | 3 scanners, CSV, romper solo sobre umbral | `paso4-umbral` | [641acd0](https://github.com/manujimeneza/juice-shop/commit/641acd04afaf9879a29bfc29e5a618a331bfcfe9) | ❌ [rojo solo en SCA](https://github.com/manujimeneza/juice-shop/actions/runs/41359304451) |
-
-Enlaces completos:
+## Enlaces de los commits
 
 - Paso 2: https://github.com/manujimeneza/juice-shop/commit/2e97565ea0365690114641dd433bb72a7fa25973
 - Paso 3: https://github.com/manujimeneza/juice-shop/commit/a6eb166f7aca74f9618b837f1f23c34e3fab5224
 - Paso 4: https://github.com/manujimeneza/juice-shop/commit/641acd04afaf9879a29bfc29e5a618a331bfcfe9
 
----
+| Paso | Rama | Resultado en Actions |
+|---|---|---|
+| 2 | paso2-informativo | [Verde](https://github.com/manujimeneza/juice-shop/actions/runs/41357862214) |
+| 3 | paso3-estricto | [Rojo en los tres jobs](https://github.com/manujimeneza/juice-shop/actions/runs/41359285248) |
+| 4 | paso4-umbral | [Rojo solo en SCA](https://github.com/manujimeneza/juice-shop/actions/runs/41359304451) |
 
-## Paso 1 — Ejecución local del CLI
+## Paso 1. Ejecución en local
 
-El CLI de Fluid Attacks se distribuye como imagen Docker. Se ejecutó en macOS (zsh) sobre un clon local de Juice Shop, montando el directorio actual en el contenedor (`-v .:/my-dir`).
-
-### 1.1 Clonar el repositorio y descargar el CLI
+Primero cloné el repositorio original de Juice Shop en mi computador y descargué la imagen de Docker del CLI.
 
 ```zsh
 cd ~/Desktop/Universidad
@@ -36,117 +27,100 @@ git clone https://github.com/juice-shop/juice-shop.git
 docker pull fluidattacks/sast:latest
 ```
 
-El primer `docker pull` falló porque Docker Desktop no estaba abierto (`Cannot connect to the Docker daemon`). Tras iniciarlo, se repitió el comando.
+La primera vez me salió el error `Cannot connect to the Docker daemon` porque no tenía Docker Desktop abierto. Lo abrí y volví a correr el comando.
 
-![Clon del repositorio y primer docker pull](capturas/01-clon-y-docker-pull.png)
+![Clon y primer intento de docker pull](capturas/01-clon-y-docker-pull.png)
 
-![Descarga de la imagen fluidattacks/sast](capturas/02-docker-pull-descarga.png)
+![Descarga de la imagen](capturas/02-docker-pull-descarga.png)
 
-### 1.2 Ejecutar el escaneo SAST
+Cuando terminó la descarga ejecuté el escaneo montando la carpeta actual en el contenedor:
 
 ```zsh
 docker run --rm -v .:/my-dir fluidattacks/sast:latest sast scan /my-dir
 ```
 
-![Imagen descargada e inicio del escaneo](capturas/03-docker-pull-ok-y-scan.png)
+![Inicio del escaneo](capturas/03-docker-pull-ok-y-scan.png)
 
-El escaneo terminó en 27 segundos con **109 vulnerabilidades**. El prompt `manu@192 juice-shop %` evidencia que corre en la máquina local:
+El escaneo tardó 27 segundos y encontró 109 vulnerabilidades. En la terminal se ve mi usuario (`manu@192 juice-shop`), o sea que se está ejecutando en mi máquina y no en un servidor.
 
-![Resumen del escaneo SAST local](capturas/04-sast-local-resumen.png)
+![Resumen SAST local](capturas/04-sast-local-resumen.png)
 
-Ejemplo de hallazgo: *371. DOM-Based cross-site scripting (XSS)* en `frontend/src/app/search-result/search-result.component.ts`, CWE-79.
+Uno de los hallazgos es un XSS basado en DOM en `search-result.component.ts`, porque usan `bypassSecurityTrustHtml` (CWE-79).
 
-![Detalle de hallazgos SAST](capturas/05-sast-local-hallazgos.png)
+![Hallazgos SAST](capturas/05-sast-local-hallazgos.png)
 
-### 1.3 Escaneo SCA local (opcional)
+También probé el SCA, que revisa las dependencias del proyecto. Encontró 50 vulnerabilidades, por ejemplo en `js-yaml` y `zod`.
 
 ```zsh
 docker pull fluidattacks/sca:latest
 docker run --rm -v .:/my-dir fluidattacks/sca:latest sca scan /my-dir
 ```
 
-Resultado: **50 vulnerabilidades** en dependencias, por ejemplo `js-yaml ^3.14.0` y `zod ^4.4.3`.
+![Resumen SCA local](capturas/06-sca-local-resumen.png)
 
-![Resumen del escaneo SCA local](capturas/06-sca-local-resumen.png)
-
-### 1.4 Ejecución con archivo de configuración
-
-Configuración usada: [`evidencias/config-local.yaml`](evidencias/config-local.yaml)
+Además lo corrí con un archivo de configuración para que me exportara los resultados en CSV:
 
 ```zsh
 docker run --rm -v .:/my-dir fluidattacks/sast:latest sast scan /my-dir/config-local.yaml
 ```
 
-Salida: [`evidencias/fluid-local-resultados.csv`](evidencias/fluid-local-resultados.csv)
+El archivo de configuración y el CSV que salió están en [evidencias](evidencias/).
 
----
+## Antes de los pasos 2, 3 y 4
 
-## Preparación para GitHub Actions
+Hice el fork de Juice Shop y activé GitHub Actions en el fork (viene desactivado por defecto). Después lo cloné en `juice-shop-fork`. La rama principal es `master`.
 
-1. Fork de `juice-shop/juice-shop` a `manujimeneza/juice-shop` (público).
-2. Activación de Actions en el fork (los forks lo traen desactivado).
-3. Clon local en `~/Desktop/Universidad/juice-shop-fork`. La rama por defecto detectada es `master`.
-4. Una rama por paso, creada desde `master`, para que cada enlace de commit sea independiente.
-
-Cada rama agrega solo archivos nuevos bajo `.github/`:
+Creé una rama distinta para cada paso, todas a partir de `master`, así cada commit queda separado. En cada rama solo agregué archivos dentro de `.github`:
 
 ```
 .github/
 ├── fluid/
-│   ├── sast.yaml   # configuración SAST
-│   ├── sca.yaml    # configuración SCA
-│   └── ss.yaml     # configuración Secret Scan
+│   ├── sast.yaml
+│   ├── sca.yaml
+│   └── ss.yaml
 └── workflows/
     └── fluid-pasoN.yml
 ```
 
-Decisiones comunes a los tres workflows:
+Algunas cosas que tuve que tener en cuenta en los workflows:
 
-- `fetch-depth: 0`: las actions consultan el historial para detectar la rama por defecto.
-- `scanner_mode: full`: fuera de la rama por defecto, SAST y Secret Scan pasan a modo diferencial. Como solo cambian archivos de `.github/`, el escaneo diferencial no analizaría nada.
-- La evidencia se sube como **artefacto** del workflow (`actions/upload-artifact`), sin depender de GitHub Advanced Security.
+- Puse `fetch-depth: 0` en el checkout porque las actions necesitan el historial de git para saber cuál es la rama principal.
+- Usé `scanner_mode: full`. Si no, en ramas que no son la principal el escáner solo revisa los archivos que cambiaron, y como yo solo agregué archivos en `.github` no habría escaneado nada.
+- Los resultados los guardé como artefactos del workflow para poder descargarlos.
 
----
+## Paso 2. Modo informativo
 
-## Paso 2 — Modo informativo
-
-**Rama:** `paso2-informativo` · **Commit:** [2e97565](https://github.com/manujimeneza/juice-shop/commit/2e97565ea0365690114641dd433bb72a7fa25973)
-
-Configuración clave (SAST y SCA):
+En este paso los tres escáneres solo reportan y no rompen el build. En los archivos de SAST y SCA dejé:
 
 ```yaml
-strict: false          # reporta, pero no falla el pipeline
+strict: false
 output:
-  format: SARIF        # sin CSV
+  format: SARIF
 ```
 
-Secret Scan solo lee las claves `ss` y `output`, así que su configuración se limita a `include`/`exclude` y salida SARIF.
+El de Secret Scan es más sencillo porque esa action solo acepta las claves `ss` y `output`.
 
-![Commit y push del Paso 2](capturas/07-paso2-commit-push.png)
+![Commit del paso 2](capturas/07-paso2-commit-push.png)
 
-**Resultado:** los 3 jobs en verde. Cada job imprime `vulnerabilities_found = false` porque en modo no estricto el escáner termina con código 0.
+Los tres jobs salieron en verde, que era lo esperado.
 
----
+## Paso 3. Modo estricto y exportación a CSV
 
-## Paso 3 — Modo estricto con CSV
-
-**Rama:** `paso3-estricto` · **Commit:** [a6eb166](https://github.com/manujimeneza/juice-shop/commit/a6eb166f7aca74f9618b837f1f23c34e3fab5224)
-
-Configuración clave (SAST y SCA):
+Aquí había que exportar a CSV y hacer que el build falle. En SAST y SCA cambié a:
 
 ```yaml
-strict: true           # código de salida 1 ante cualquier hallazgo
+strict: true
 output:
-  format: ALL          # genera .csv y .sarif
+  format: ALL
 ```
 
-Secret Scan: `format: CSV` (no admite `ALL` ni `strict`).
+Con `ALL` se genera el CSV y el SARIF. En Secret Scan puse `format: CSV`, porque ahí no se puede usar `ALL`.
 
-![Commit y push del Paso 3](capturas/08-paso3-commit-push.png)
+![Commit del paso 3](capturas/08-paso3-commit-push.png)
 
-### Hallazgo durante la ejecución: el primer intento salió en verde
+### Problema que encontré
 
-La primera versión del workflow (commit `94789af`) terminó **en verde**, aunque la configuración tenía `strict: true`. Al revisar el código de la action ([`generate-config.sh`](https://github.com/fluidattacks/sast-action/blob/main/generate-config.sh)):
+La primera vez que lo subí (commit `94789af`) el workflow salió en verde, aunque tenía `strict: true`. Me pareció raro, así que revisé el código de la action ([generate-config.sh](https://github.com/fluidattacks/sast-action/blob/main/generate-config.sh)) y vi esto:
 
 ```bash
 docker run ... sast scan "${CONFIG_FILE}" || exit_code=$?
@@ -156,7 +130,7 @@ elif [[ ${exit_code} -eq 1 ]]; then
   echo "vulnerabilities_found=true" >> "${GITHUB_OUTPUT}"
 ```
 
-La action **captura** el código 1 del modo estricto y lo convierte en la salida `vulnerabilities_found=true`, sin fallar el job. La decisión de romper el build queda en manos del pipeline. La corrección (commit `a6eb166`) agrega a cada job un paso explícito:
+O sea, el escáner sí termina con error, pero la action lo atrapa y solo deja una variable `vulnerabilities_found=true`, sin hacer fallar el job. Para solucionarlo agregué un paso al final de cada job que revisa esa variable:
 
 ```yaml
 - name: Romper el build (modo estricto)
@@ -164,61 +138,53 @@ La action **captura** el código 1 del modo estricto y lo convierte en la salida
   run: exit 1
 ```
 
-En Secret Scan, el binario `ss` termina con código 0 aunque encuentre secretos. Por eso el quiebre también cuenta las filas del CSV.
+En Secret Scan además cuento las filas del CSV, porque ese escáner termina bien aunque encuentre secretos.
 
-Hubo un segundo problema: con `format: ALL` el escáner agrega la extensión al `file_path` y genera `fluid-sast-estricto.sarif.csv`. La ruta del artefacto se cambió a `fluid-sast-estricto*`.
+También noté que con `format: ALL` el archivo se llamaba `fluid-sast-estricto.sarif.csv` y no `fluid-sast-estricto.csv`, por eso no se estaba guardando. Cambié la ruta a `fluid-sast-estricto*`.
 
-**Resultado:** ❌ los 3 jobs en rojo (SAST, SCA y Secret Scan), que es lo esperado sobre una aplicación deliberadamente vulnerable.
+Con eso (commit `a6eb166`) los tres jobs salieron en rojo. Eso es lo correcto, porque Juice Shop está hecho para ser vulnerable.
 
-CSV exportados: [`evidencias/paso3/`](evidencias/paso3/)
+Los CSV que se generaron están en [evidencias/paso3](evidencias/paso3/).
 
----
+## Paso 4. Umbral de severidad
 
-## Paso 4 — Quiebre condicionado por `strictness_threshold`
-
-**Rama:** `paso4-umbral` · **Commit:** [641acd0](https://github.com/manujimeneza/juice-shop/commit/641acd04afaf9879a29bfc29e5a618a331bfcfe9)
-
-Configuración clave (SAST y SCA):
+En este paso el build solo debe fallar si hay vulnerabilidades graves. En SAST y SCA agregué:
 
 ```yaml
 strict: true
-strictness_threshold: high   # solo high y critical rompen el build
+strictness_threshold: high
 output:
   format: ALL
 ```
 
-El escáner **sigue reportando** todas las severidades en el CSV, pero solo termina con código 1 si alguna es `high` o `critical`. El workflow aplica la misma corrección del Paso 3.
+Con `high` el escáner sigue reportando todo en el CSV, pero solo falla si encuentra algo high o critical. En el workflow dejé el mismo paso de corrección que en el paso 3.
 
-**Secret Scan:** según la documentación, solo SAST, SCA y DAST soportan `strictness_threshold`. Por eso en este paso Secret Scan queda informativo, con la justificación escrita en `ss.yaml`.
+Secret Scan no tiene `strictness_threshold` (según la documentación solo lo tienen SAST, SCA y DAST), así que en este paso lo dejé informativo. Lo expliqué en un comentario en `ss.yaml`.
 
-![Commit y push del Paso 4](capturas/09-paso4-commit-push.png)
+![Commit del paso 4](capturas/09-paso4-commit-push.png)
 
-> En la captura, `git checkout -b paso4-umbral` falló porque la rama ya existía, y el commit quedó en `master` local. Se movió a `paso4-umbral` (`git branch -f`) y `master` se restauró a `origin/master` antes del push definitivo.
+En la captura se ve que `git checkout -b paso4-umbral` me dio error porque la rama ya existía, y el commit quedó en `master`. Lo corregí moviendo el commit a la rama `paso4-umbral` y dejando `master` como estaba.
 
-**Resultado:**
+Resultado:
 
-| Job | Resultado | Interpretación |
+| Job | Resultado | Por qué |
 |---|---|---|
-| SAST (umbral high) | ✅ verde | Ningún hallazgo SAST alcanza high/critical. Todos quedan reportados en el CSV |
-| SCA (umbral high) | ❌ rojo | Hay dependencias con CVE de severidad high o superior |
-| Secret Scan | ✅ verde | Informativo por diseño |
+| SAST | Verde | No hay hallazgos high o critical (igual quedan todos en el CSV) |
+| SCA | Rojo | Hay dependencias con vulnerabilidades high o critical |
+| Secret Scan | Verde | Es informativo |
 
-Esto muestra el efecto del umbral: con el mismo código, el Paso 3 falla en SAST y el Paso 4 no.
+Me parece interesante que con el mismo código SAST falla en el paso 3 y pasa en el paso 4; ahí se nota el efecto del umbral.
 
-CSV exportados: [`evidencias/paso4/`](evidencias/paso4/)
+Los CSV están en [evidencias/paso4](evidencias/paso4/).
 
----
+## Ejecuciones en GitHub Actions
 
-## Vista general de las ejecuciones en GitHub Actions
+![Ejecuciones en Actions](capturas/10-actions-ejecuciones.png)
 
-![Listado de workflows en Actions](capturas/10-actions-ejecuciones.png)
-
-> Esta captura es anterior a las correcciones: muestra el primer intento del Paso 3 en verde. Los runs definitivos están enlazados en la tabla de resumen.
-
----
+Esta captura la tomé antes de corregir el paso 3, por eso todavía aparece en verde. Los resultados finales están en los enlaces del principio.
 
 ## Conclusiones
 
-1. **Local frente a pipeline:** el mismo motor detecta los mismos hallazgos en local (Docker) y en GitHub Actions. La diferencia es que en el pipeline el análisis corre solo en cada push.
-2. **Informativo → estricto → umbral** es una adopción gradual: primero se ve el estado real, después se bloquea todo y al final se bloquea solo lo grave, para no frenar el desarrollo por hallazgos de baja severidad.
-3. **Hay que verificar que la puerta de calidad realmente bloquee.** `strict: true` en la configuración no bastó: la action absorbe el código de salida. Un pipeline en verde no prueba que el control funcione, así que hay que comprobarlo con un caso que deba fallar.
+- En local y en GitHub Actions el escáner encuentra lo mismo. La ventaja del pipeline es que se ejecuta solo cada vez que se sube código.
+- Tiene sentido ir por etapas: primero modo informativo para ver cómo está el proyecto, después estricto, y al final con un umbral para bloquear solo lo grave y no detener el desarrollo por hallazgos menores.
+- Aprendí que no basta con poner `strict: true` y ver el pipeline en verde. Hay que comprobar que de verdad bloquea, porque en mi caso la action no estaba haciendo fallar el build.
