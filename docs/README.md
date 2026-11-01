@@ -1,4 +1,4 @@
-# Informe semana 4: Fluid Attacks sobre Juice Shop
+# Taller 4: Fluid Attacks con Juice Shop
 
 Desarrollo de Sistemas Seguros (0453_2666)
 Manuela Jiménez
