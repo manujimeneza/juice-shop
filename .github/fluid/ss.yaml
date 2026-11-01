@@ -1,0 +1,18 @@
+#  PASO 3  Secret Scan con exportacion a CSV
+#
+#  LIMITACION DOCUMENTADA: la action de Secret Scan lee unicamente las
+#  claves `ss` y `output`; no soporta `strict`. El quiebre del build se
+#  implementa en el workflow con la salida `vulnerabilities_found`.
+#  Ademas `format` aqui solo admite SARIF o CSV (no ALL).
+
+ss:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - build
+    - dist
+
+output:
+  file_path: fluid-ss-estricto.csv
+  format: CSV

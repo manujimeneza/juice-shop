@@ -1,0 +1,94 @@
+name: Fluid Attacks - Paso 3 (estricto)
+
+# NOTA: se espera que este workflow FALLE. Ese es el resultado correcto
+# sobre un repositorio deliberadamente vulnerable.
+
+on:
+  push:
+    branches: [paso3-estricto]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+
+  sast:
+    name: SAST (estricto)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo SAST
+        id: scan
+        uses: fluidattacks/sast-action@main
+        with:
+          scan_config_path: .github/fluid/sast.yaml
+          scanner_mode: full
+
+      - name: Evidencia (CSV + SARIF)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso3-sast
+          path: |
+            fluid-sast-estricto.csv
+            fluid-sast-estricto.sarif
+          if-no-files-found: warn
+
+  sca:
+    name: SCA (estricto)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo SCA
+        id: scan
+        uses: fluidattacks/sca-action@main
+        with:
+          scan_config_path: .github/fluid/sca.yaml
+          scanner_mode: full
+
+      - name: Evidencia (CSV + SARIF)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso3-sca
+          path: |
+            fluid-sca-estricto.csv
+            fluid-sca-estricto.sarif
+          if-no-files-found: warn
+
+  secret-scan:
+    name: Secret Scan (estricto)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo de secretos
+        id: scan
+        uses: fluidattacks/ss-action@main
+        with:
+          scan_config_path: .github/fluid/ss.yaml
+          scanner_mode: full
+
+      - name: Evidencia (CSV)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso3-ss
+          path: fluid-ss-estricto.csv
+          if-no-files-found: warn
+
+      - name: Romper el build si se detectaron secretos
+        if: steps.scan.outputs.vulnerabilities_found == 'true'
+        run: |
+          echo "::error::Secret Scan detecto credenciales embebidas. Build rechazado."
+          exit 1

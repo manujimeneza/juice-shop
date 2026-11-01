@@ -1,0 +1,23 @@
+#  PASO 3  SAST en modo ESTRICTO
+#  Exporta CSV y rompe el build ante CUALQUIER hallazgo.
+namespace: juice-shop-paso3
+language: ES
+working_dir: .
+
+# strict: true -> salida con codigo 1 si encuentra una o mas vulnerabilidades.
+strict: true
+
+output:
+  file_path: fluid-sast-estricto.sarif
+  # ALL genera .sarif y .csv simultaneamente.
+  format: ALL
+
+sast:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - "*.min.js"
+    - build
+    - dist
+    - frontend/dist

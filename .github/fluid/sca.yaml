@@ -1,0 +1,19 @@
+#  PASO 3  SCA en modo ESTRICTO
+#  Exporta CSV y rompe el build ante CUALQUIER hallazgo.
+namespace: juice-shop-paso3
+language: ES
+working_dir: .
+
+strict: true
+
+output:
+  file_path: fluid-sca-estricto.sarif
+  format: ALL
+
+sca:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - build
+    - dist
