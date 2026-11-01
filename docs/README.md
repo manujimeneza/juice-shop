@@ -1,7 +1,7 @@
 # Taller 4: Fluid Attacks con Juice Shop
 
-Desarrollo de Sistemas Seguros (0453_2666)
-Manuela Jiménez
+Desarrollo de Sistemas Seguros
+Manuela Jiménez Arredondo
 
 Para este trabajo usé OWASP Juice Shop. Hice un fork en mi cuenta ([manujimeneza/juice-shop](https://github.com/manujimeneza/juice-shop)) y sobre ese fork configuré los escáneres de Fluid Attacks (SAST, SCA y Secret Scan), primero en local con Docker y después en GitHub Actions.
 
