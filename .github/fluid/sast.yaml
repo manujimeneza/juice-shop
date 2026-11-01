@@ -1,0 +1,25 @@
+#  PASO 4  SAST con UMBRAL de severidad
+namespace: juice-shop-paso4
+language: ES
+working_dir: .
+
+strict: true
+
+# Valores validos: none, low, medium, high, critical.
+# Con `high`, el escaner SIGUE reportando low y medium, pero solo
+# high y critical detienen la ejecucion.
+strictness_threshold: high
+
+output:
+  file_path: fluid-sast-umbral.sarif
+  format: ALL
+
+sast:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - "*.min.js"
+    - build
+    - dist
+    - frontend/dist

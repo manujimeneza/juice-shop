@@ -1,0 +1,91 @@
+name: Fluid Attacks - Paso 4 (umbral de severidad)
+
+on:
+  push:
+    branches: [paso4-umbral]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+
+  sast:
+    name: SAST (umbral high)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo SAST
+        id: scan
+        uses: fluidattacks/sast-action@main
+        with:
+          scan_config_path: .github/fluid/sast.yaml
+          scanner_mode: full
+
+      - name: Evidencia (CSV + SARIF)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso4-sast
+          path: |
+            fluid-sast-umbral.csv
+            fluid-sast-umbral.sarif
+          if-no-files-found: warn
+
+  sca:
+    name: SCA (umbral high)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo SCA
+        id: scan
+        uses: fluidattacks/sca-action@main
+        with:
+          scan_config_path: .github/fluid/sca.yaml
+          scanner_mode: full
+
+      - name: Evidencia (CSV + SARIF)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso4-sca
+          path: |
+            fluid-sca-umbral.csv
+            fluid-sca-umbral.sarif
+          if-no-files-found: warn
+
+  secret-scan:
+    name: Secret Scan (informativo, ver justificacion)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo de secretos
+        id: scan
+        uses: fluidattacks/ss-action@main
+        with:
+          scan_config_path: .github/fluid/ss.yaml
+          scanner_mode: full
+
+      - name: Resultado del escaneo
+        if: always()
+        run: |
+          echo "vulnerabilities_found = ${{ steps.scan.outputs.vulnerabilities_found }}"
+          echo "Secret Scan no soporta strictness_threshold: no rompe el build en este paso."
+
+      - name: Evidencia (CSV)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paso4-ss
+          path: fluid-ss-umbral.csv
+          if-no-files-found: warn

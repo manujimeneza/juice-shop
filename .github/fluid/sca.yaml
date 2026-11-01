@@ -1,0 +1,19 @@
+#  PASO 4  SCA con UMBRAL de severidad
+namespace: juice-shop-paso4
+language: ES
+working_dir: .
+
+strict: true
+strictness_threshold: high
+
+output:
+  file_path: fluid-sca-umbral.sarif
+  format: ALL
+
+sca:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - build
+    - dist

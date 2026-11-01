@@ -1,0 +1,18 @@
+#  PASO 4  Secret Scan con exportacion a CSV
+#
+#  LIMITACION DOCUMENTADA: solo los scanners SAST, SCA y DAST soportan
+#  `strictness_threshold`. Secret Scan no expone severidad configurable.
+#  Decision: en este paso queda INFORMATIVO. Es ademas la postura correcta
+#  en seguridad: un secreto expuesto no admite gradacion de severidad.
+
+ss:
+  include:
+    - .
+  exclude:
+    - node_modules
+    - build
+    - dist
+
+output:
+  file_path: fluid-ss-umbral.csv
+  format: CSV
